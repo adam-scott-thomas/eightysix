@@ -1,0 +1,1795 @@
+{
+  "location": {
+    "name": "Downtown Grill",
+    "timezone": "America/Detroit",
+    "business_hours": {
+      "mon": {
+        "open": "06:00",
+        "close": "23:00"
+      },
+      "tue": {
+        "open": "06:00",
+        "close": "23:00"
+      },
+      "wed": {
+        "open": "06:00",
+        "close": "23:00"
+      },
+      "thu": {
+        "open": "06:00",
+        "close": "23:00"
+      },
+      "fri": {
+        "open": "06:00",
+        "close": "23:00"
+      },
+      "sat": {
+        "open": "06:00",
+        "close": "23:00"
+      },
+      "sun": {
+        "open": "06:00",
+        "close": "23:00"
+      }
+    },
+    "default_hourly_rate": 15.0
+  },
+  "employees": [
+    {
+      "external_employee_id": "EMP-001",
+      "first_name": "Maria",
+      "last_name": "Chen",
+      "role": "kitchen",
+      "hourly_rate": 16.0
+    },
+    {
+      "external_employee_id": "EMP-002",
+      "first_name": "Derek",
+      "last_name": "Johnson",
+      "role": "kitchen",
+      "hourly_rate": 16.0
+    },
+    {
+      "external_employee_id": "EMP-003",
+      "first_name": "Jake",
+      "last_name": "Miller",
+      "role": "floor",
+      "hourly_rate": 12.0
+    },
+    {
+      "external_employee_id": "EMP-004",
+      "first_name": "Samantha",
+      "last_name": "Brooks",
+      "role": "floor",
+      "hourly_rate": 12.0
+    },
+    {
+      "external_employee_id": "EMP-005",
+      "first_name": "Robert",
+      "last_name": "Hayes",
+      "role": "manager",
+      "hourly_rate": 22.0
+    }
+  ],
+  "menu_items": [
+    {
+      "external_item_id": "ITEM-001",
+      "item_name": "Classic Burger",
+      "category": "entrees",
+      "price": 13.0,
+      "estimated_food_cost": 4.5
+    },
+    {
+      "external_item_id": "ITEM-002",
+      "item_name": "BBQ Bacon Burger",
+      "category": "entrees",
+      "price": 15.5,
+      "estimated_food_cost": 5.5
+    },
+    {
+      "external_item_id": "ITEM-003",
+      "item_name": "Grilled Chicken Sandwich",
+      "category": "entrees",
+      "price": 12.5,
+      "estimated_food_cost": 4.0
+    },
+    {
+      "external_item_id": "ITEM-004",
+      "item_name": "Fish Tacos",
+      "category": "entrees",
+      "price": 14.0,
+      "estimated_food_cost": 5.0
+    },
+    {
+      "external_item_id": "ITEM-005",
+      "item_name": "Caesar Salad",
+      "category": "entrees",
+      "price": 10.0,
+      "estimated_food_cost": 2.5
+    },
+    {
+      "external_item_id": "ITEM-006",
+      "item_name": "French Fries",
+      "category": "sides",
+      "price": 5.0,
+      "estimated_food_cost": 2.0
+    },
+    {
+      "external_item_id": "ITEM-007",
+      "item_name": "Onion Rings",
+      "category": "sides",
+      "price": 6.5,
+      "estimated_food_cost": 2.5
+    },
+    {
+      "external_item_id": "ITEM-008",
+      "item_name": "Sweet Potato Fries",
+      "category": "sides",
+      "price": 6.0,
+      "estimated_food_cost": 2.5
+    },
+    {
+      "external_item_id": "ITEM-009",
+      "item_name": "Coleslaw",
+      "category": "sides",
+      "price": 4.0,
+      "estimated_food_cost": 1.0
+    },
+    {
+      "external_item_id": "ITEM-010",
+      "item_name": "Soft Drink",
+      "category": "drinks",
+      "price": 3.0,
+      "estimated_food_cost": 0.3
+    },
+    {
+      "external_item_id": "ITEM-011",
+      "item_name": "Craft Beer",
+      "category": "drinks",
+      "price": 7.0,
+      "estimated_food_cost": 2.5
+    },
+    {
+      "external_item_id": "ITEM-012",
+      "item_name": "Milkshake",
+      "category": "drinks",
+      "price": 6.5,
+      "estimated_food_cost": 2.0
+    },
+    {
+      "external_item_id": "ITEM-013",
+      "item_name": "Iced Tea",
+      "category": "drinks",
+      "price": 2.5,
+      "estimated_food_cost": 0.2
+    },
+    {
+      "external_item_id": "ITEM-014",
+      "item_name": "Brownie Sundae",
+      "category": "desserts",
+      "price": 8.0,
+      "estimated_food_cost": 2.5
+    },
+    {
+      "external_item_id": "ITEM-015",
+      "item_name": "Cheesecake Slice",
+      "category": "desserts",
+      "price": 7.5,
+      "estimated_food_cost": 2.0
+    }
+  ],
+  "orders": [
+    {
+      "external_order_id": "ORD-001",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T14:00:00Z",
+      "order_total": 21.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 210
+    },
+    {
+      "external_order_id": "ORD-002",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T14:32:00Z",
+      "order_total": 22.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 241
+    },
+    {
+      "external_order_id": "ORD-003",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T15:04:00Z",
+      "order_total": 21.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 272
+    },
+    {
+      "external_order_id": "ORD-004",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T15:36:00Z",
+      "order_total": 21.0,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 303
+    },
+    {
+      "external_order_id": "ORD-005",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T16:08:00Z",
+      "order_total": 12.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 334
+    },
+    {
+      "external_order_id": "ORD-006",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T16:40:00Z",
+      "order_total": 21.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 365
+    },
+    {
+      "external_order_id": "ORD-007",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T17:12:00Z",
+      "order_total": 27.5,
+      "channel": "delivery",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 396
+    },
+    {
+      "external_order_id": "ORD-008",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T17:44:00Z",
+      "order_total": 16.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 216
+    },
+    {
+      "external_order_id": "ORD-009",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T18:16:00Z",
+      "order_total": 23.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 247
+    },
+    {
+      "external_order_id": "ORD-010",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T18:48:00Z",
+      "order_total": 19.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 278
+    },
+    {
+      "external_order_id": "ORD-011",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T19:20:00Z",
+      "order_total": 23.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 309
+    },
+    {
+      "external_order_id": "ORD-012",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T19:52:00Z",
+      "order_total": 18.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 340
+    },
+    {
+      "external_order_id": "ORD-013",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T20:24:00Z",
+      "order_total": 26.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 371
+    },
+    {
+      "external_order_id": "ORD-014",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T20:56:00Z",
+      "order_total": 20.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 402
+    },
+    {
+      "external_order_id": "ORD-015",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T21:28:00Z",
+      "order_total": 20.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 222
+    },
+    {
+      "external_order_id": "ORD-016",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:00:00Z",
+      "order_total": 21.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 600
+    },
+    {
+      "external_order_id": "ORD-017",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T22:04:00Z",
+      "order_total": 27.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 623
+    },
+    {
+      "external_order_id": "ORD-018",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:08:00Z",
+      "order_total": 16.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 646
+    },
+    {
+      "external_order_id": "ORD-019",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T22:12:00Z",
+      "order_total": 23.0,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 669
+    },
+    {
+      "external_order_id": "ORD-020",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:16:00Z",
+      "order_total": 19.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 692
+    },
+    {
+      "external_order_id": "ORD-021",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T22:20:00Z",
+      "order_total": 23.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 715
+    },
+    {
+      "external_order_id": "ORD-022",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:24:00Z",
+      "order_total": 18.0,
+      "channel": "delivery",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 738
+    },
+    {
+      "external_order_id": "ORD-023",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T22:28:00Z",
+      "order_total": 26.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 761
+    },
+    {
+      "external_order_id": "ORD-024",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:32:00Z",
+      "order_total": 20.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 784
+    },
+    {
+      "external_order_id": "ORD-025",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T22:36:00Z",
+      "order_total": 20.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 807
+    },
+    {
+      "external_order_id": "ORD-026",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:40:00Z",
+      "order_total": 16.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 830
+    },
+    {
+      "external_order_id": "ORD-027",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T22:44:00Z",
+      "order_total": 21.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 853
+    },
+    {
+      "external_order_id": "ORD-028",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:48:00Z",
+      "order_total": 27.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 876
+    },
+    {
+      "external_order_id": "ORD-029",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T22:52:00Z",
+      "order_total": 19.0,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 899
+    },
+    {
+      "external_order_id": "ORD-030",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T22:56:00Z",
+      "order_total": 24.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 621
+    },
+    {
+      "external_order_id": "ORD-031",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:00:00Z",
+      "order_total": 13.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 644
+    },
+    {
+      "external_order_id": "ORD-032",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T23:04:00Z",
+      "order_total": 22.5,
+      "channel": "delivery",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 667
+    },
+    {
+      "external_order_id": "ORD-033",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:08:00Z",
+      "order_total": 20.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 690
+    },
+    {
+      "external_order_id": "ORD-034",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T23:12:00Z",
+      "order_total": 20.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 713
+    },
+    {
+      "external_order_id": "ORD-035",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:16:00Z",
+      "order_total": 21.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 736
+    },
+    {
+      "external_order_id": "ORD-036",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T23:20:00Z",
+      "order_total": 21.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 759
+    },
+    {
+      "external_order_id": "ORD-037",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:24:00Z",
+      "order_total": 22.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 782
+    },
+    {
+      "external_order_id": "ORD-038",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T23:28:00Z",
+      "order_total": 21.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 805
+    },
+    {
+      "external_order_id": "ORD-039",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:32:00Z",
+      "order_total": 21.0,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 828
+    },
+    {
+      "external_order_id": "ORD-040",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T23:36:00Z",
+      "order_total": 12.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 851
+    },
+    {
+      "external_order_id": "ORD-041",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:40:00Z",
+      "order_total": 21.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 874
+    },
+    {
+      "external_order_id": "ORD-042",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T23:44:00Z",
+      "order_total": 27.5,
+      "channel": "delivery",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 897
+    },
+    {
+      "external_order_id": "ORD-043",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:48:00Z",
+      "order_total": 16.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 619
+    },
+    {
+      "external_order_id": "ORD-044",
+      "employee_external_id": "EMP-003",
+      "ordered_at": "2025-03-15T23:52:00Z",
+      "order_total": 23.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 642
+    },
+    {
+      "external_order_id": "ORD-045",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-15T23:56:00Z",
+      "order_total": 19.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 665
+    },
+    {
+      "external_order_id": "ORD-046",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:00:00Z",
+      "order_total": 23.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 400
+    },
+    {
+      "external_order_id": "ORD-047",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:08:00Z",
+      "order_total": 18.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 429
+    },
+    {
+      "external_order_id": "ORD-048",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:16:00Z",
+      "order_total": 26.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 458
+    },
+    {
+      "external_order_id": "ORD-049",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:24:00Z",
+      "order_total": 20.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 487
+    },
+    {
+      "external_order_id": "ORD-050",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:32:00Z",
+      "order_total": 20.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 516
+    },
+    {
+      "external_order_id": "ORD-051",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:40:00Z",
+      "order_total": 16.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 545
+    },
+    {
+      "external_order_id": "ORD-052",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:48:00Z",
+      "order_total": 21.5,
+      "channel": "delivery",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 574
+    },
+    {
+      "external_order_id": "ORD-053",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T00:56:00Z",
+      "order_total": 27.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 402
+    },
+    {
+      "external_order_id": "ORD-054",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T01:04:00Z",
+      "order_total": 19.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 431
+    },
+    {
+      "external_order_id": "ORD-055",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T01:12:00Z",
+      "order_total": 24.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 460
+    },
+    {
+      "external_order_id": "ORD-056",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T01:20:00Z",
+      "order_total": 13.0,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 489
+    },
+    {
+      "external_order_id": "ORD-057",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T01:28:00Z",
+      "order_total": 22.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 518
+    },
+    {
+      "external_order_id": "ORD-058",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T01:36:00Z",
+      "order_total": 20.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 547
+    },
+    {
+      "external_order_id": "ORD-059",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T01:44:00Z",
+      "order_total": 20.5,
+      "channel": "takeout",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 576
+    },
+    {
+      "external_order_id": "ORD-060",
+      "employee_external_id": "EMP-004",
+      "ordered_at": "2025-03-16T01:52:00Z",
+      "order_total": 21.5,
+      "channel": "dine_in",
+      "refund_amount": 0,
+      "comp_amount": 0,
+      "void_amount": 0,
+      "prep_time_seconds": 404
+    }
+  ],
+  "order_items": [
+    {
+      "external_order_id": "ORD-001",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-001",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-001",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-002",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-002",
+      "external_item_id": "ITEM-007",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-003",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-003",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-003",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-004",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-004",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-005",
+      "external_item_id": "ITEM-005",
+      "quantity": 1,
+      "line_total": 10.0
+    },
+    {
+      "external_order_id": "ORD-005",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-006",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-006",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-007",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-007",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-007",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-008",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-008",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-009",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-009",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-009",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-010",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-010",
+      "external_item_id": "ITEM-012",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-011",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-011",
+      "external_item_id": "ITEM-015",
+      "quantity": 1,
+      "line_total": 7.5
+    },
+    {
+      "external_order_id": "ORD-012",
+      "external_item_id": "ITEM-005",
+      "quantity": 1,
+      "line_total": 10.0
+    },
+    {
+      "external_order_id": "ORD-012",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-012",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-013",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-013",
+      "external_item_id": "ITEM-007",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-013",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-014",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-014",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-015",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-015",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-015",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-016",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-016",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-017",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-017",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-017",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-018",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-018",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-019",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-019",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-019",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-020",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-020",
+      "external_item_id": "ITEM-012",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-021",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-021",
+      "external_item_id": "ITEM-015",
+      "quantity": 1,
+      "line_total": 7.5
+    },
+    {
+      "external_order_id": "ORD-022",
+      "external_item_id": "ITEM-005",
+      "quantity": 1,
+      "line_total": 10.0
+    },
+    {
+      "external_order_id": "ORD-022",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-022",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-023",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-023",
+      "external_item_id": "ITEM-007",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-023",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-024",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-024",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-025",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-025",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-025",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-026",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-026",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-027",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-027",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-028",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-028",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-028",
+      "external_item_id": "ITEM-015",
+      "quantity": 1,
+      "line_total": 7.5
+    },
+    {
+      "external_order_id": "ORD-029",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-029",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-030",
+      "external_item_id": "ITEM-005",
+      "quantity": 1,
+      "line_total": 10.0
+    },
+    {
+      "external_order_id": "ORD-030",
+      "external_item_id": "ITEM-012",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-030",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-031",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-032",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-032",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-032",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-033",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-033",
+      "external_item_id": "ITEM-012",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-034",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-034",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-034",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-035",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-035",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-035",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-036",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-036",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-036",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-037",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-037",
+      "external_item_id": "ITEM-007",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-038",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-038",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-038",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-039",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-039",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-040",
+      "external_item_id": "ITEM-005",
+      "quantity": 1,
+      "line_total": 10.0
+    },
+    {
+      "external_order_id": "ORD-040",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-041",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-041",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-042",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-042",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-042",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-043",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-043",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-044",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-044",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-044",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-045",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-045",
+      "external_item_id": "ITEM-012",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-046",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-046",
+      "external_item_id": "ITEM-015",
+      "quantity": 1,
+      "line_total": 7.5
+    },
+    {
+      "external_order_id": "ORD-047",
+      "external_item_id": "ITEM-005",
+      "quantity": 1,
+      "line_total": 10.0
+    },
+    {
+      "external_order_id": "ORD-047",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-047",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-048",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-048",
+      "external_item_id": "ITEM-007",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-048",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-049",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-049",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-050",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-050",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-050",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    },
+    {
+      "external_order_id": "ORD-051",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-051",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-052",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-052",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-053",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-053",
+      "external_item_id": "ITEM-011",
+      "quantity": 1,
+      "line_total": 7.0
+    },
+    {
+      "external_order_id": "ORD-053",
+      "external_item_id": "ITEM-015",
+      "quantity": 1,
+      "line_total": 7.5
+    },
+    {
+      "external_order_id": "ORD-054",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-054",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-055",
+      "external_item_id": "ITEM-005",
+      "quantity": 1,
+      "line_total": 10.0
+    },
+    {
+      "external_order_id": "ORD-055",
+      "external_item_id": "ITEM-012",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-055",
+      "external_item_id": "ITEM-014",
+      "quantity": 1,
+      "line_total": 8.0
+    },
+    {
+      "external_order_id": "ORD-056",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-057",
+      "external_item_id": "ITEM-002",
+      "quantity": 1,
+      "line_total": 15.5
+    },
+    {
+      "external_order_id": "ORD-057",
+      "external_item_id": "ITEM-009",
+      "quantity": 1,
+      "line_total": 4.0
+    },
+    {
+      "external_order_id": "ORD-057",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-058",
+      "external_item_id": "ITEM-004",
+      "quantity": 1,
+      "line_total": 14.0
+    },
+    {
+      "external_order_id": "ORD-058",
+      "external_item_id": "ITEM-012",
+      "quantity": 1,
+      "line_total": 6.5
+    },
+    {
+      "external_order_id": "ORD-059",
+      "external_item_id": "ITEM-003",
+      "quantity": 1,
+      "line_total": 12.5
+    },
+    {
+      "external_order_id": "ORD-059",
+      "external_item_id": "ITEM-006",
+      "quantity": 1,
+      "line_total": 5.0
+    },
+    {
+      "external_order_id": "ORD-059",
+      "external_item_id": "ITEM-010",
+      "quantity": 1,
+      "line_total": 3.0
+    },
+    {
+      "external_order_id": "ORD-060",
+      "external_item_id": "ITEM-001",
+      "quantity": 1,
+      "line_total": 13.0
+    },
+    {
+      "external_order_id": "ORD-060",
+      "external_item_id": "ITEM-008",
+      "quantity": 1,
+      "line_total": 6.0
+    },
+    {
+      "external_order_id": "ORD-060",
+      "external_item_id": "ITEM-013",
+      "quantity": 1,
+      "line_total": 2.5
+    }
+  ],
+  "shifts": [
+    {
+      "external_shift_id": "SHIFT-001",
+      "employee_external_id": "EMP-001",
+      "clock_in": "2025-03-15T14:00:00Z",
+      "clock_out": "2025-03-15T20:00:00Z",
+      "role_during_shift": "kitchen",
+      "source_type": "stub",
+      "ip_address": "192.168.1.10",
+      "device_fingerprint": "KIOSK-KITCHEN-01",
+      "geo_lat": 42.3314,
+      "geo_lng": -83.0458,
+      "geofence_match": true
+    },
+    {
+      "external_shift_id": "SHIFT-002",
+      "employee_external_id": "EMP-002",
+      "clock_in": "2025-03-15T20:00:00Z",
+      "clock_out": null,
+      "role_during_shift": "kitchen",
+      "source_type": "stub",
+      "ip_address": "192.168.1.10",
+      "device_fingerprint": "KIOSK-KITCHEN-01",
+      "geo_lat": 42.3314,
+      "geo_lng": -83.0458,
+      "geofence_match": true
+    },
+    {
+      "external_shift_id": "SHIFT-003",
+      "employee_external_id": "EMP-003",
+      "clock_in": "2025-03-15T14:00:00Z",
+      "clock_out": "2025-03-16T00:00:00Z",
+      "role_during_shift": "floor",
+      "source_type": "stub",
+      "ip_address": "192.168.1.10",
+      "device_fingerprint": "KIOSK-FLOOR-01",
+      "geo_lat": 42.3314,
+      "geo_lng": -83.0458,
+      "geofence_match": true
+    },
+    {
+      "external_shift_id": "SHIFT-004",
+      "employee_external_id": "EMP-004",
+      "clock_in": "2025-03-15T20:00:00Z",
+      "clock_out": null,
+      "role_during_shift": "floor",
+      "source_type": "stub",
+      "ip_address": "192.168.1.10",
+      "device_fingerprint": "KIOSK-FLOOR-01",
+      "geo_lat": 42.3314,
+      "geo_lng": -83.0458,
+      "geofence_match": true
+    },
+    {
+      "external_shift_id": "SHIFT-005",
+      "employee_external_id": "EMP-005",
+      "clock_in": "2025-03-15T14:00:00Z",
+      "clock_out": "2025-03-16T00:00:00Z",
+      "role_during_shift": "manager",
+      "source_type": "stub",
+      "ip_address": "192.168.1.10",
+      "device_fingerprint": "KIOSK-MGR-01",
+      "geo_lat": 42.3314,
+      "geo_lng": -83.0458,
+      "geofence_match": true
+    }
+  ],
+  "observations": []
+}
