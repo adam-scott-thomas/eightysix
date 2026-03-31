@@ -22,12 +22,14 @@ from intake import type_coercion as tc
 _HEADER_SIGNALS: dict[ReportType, list[tuple[list[str], float]]] = {
     ReportType.SALES_SUMMARY: [
         (["net sales", "netsales", "net_sales", "sales net", "revenue", "gross sales",
-          "total sales", "sales total", "sales $", "sales amount"], 0.35),
+          "total sales", "sales total", "sales $", "sales amount", "total revenue"], 0.35),
         (["order count", "orders", "num orders", "order_count", "checks", "transactions",
-          "ticket count"], 0.20),
+          "ticket count", "covers"], 0.20),
         (["date", "day", "business date", "business_date", "period"], 0.10),
-        (["delivery", "delivery sales", "doordash", "ubereats", "grubhub", "online"], 0.15),
+        (["delivery", "delivery sales", "doordash", "ubereats", "grubhub", "online",
+          "dine in", "dine-in", "takeout", "catering"], 0.15),
         (["daypart", "meal period", "shift", "hour"], 0.10),
+        (["discounts", "discount", "avg check", "average check", "tax", "tax collected"], 0.15),
     ],
     ReportType.SALES_BY_HOUR: [
         (["net sales", "netsales", "sales", "revenue"], 0.25),
@@ -63,7 +65,7 @@ _HEADER_SIGNALS: dict[ReportType, list[tuple[list[str], float]]] = {
     ],
     ReportType.REFUNDS_VOIDS_COMPS: [
         (["refund", "refund amount", "refund amt", "refund $", "void", "void amount",
-          "comp", "comp amount", "discount", "adjustment"], 0.35),
+          "comp", "comp amount", "comp or void", "adjustment"], 0.35),
         (["employee", "emp", "team member", "staff", "server", "cashier"], 0.20),
         (["type", "action", "action type", "reason", "refund type", "void reason"], 0.20),
         (["order", "order id", "order #", "check", "check #", "ticket",
