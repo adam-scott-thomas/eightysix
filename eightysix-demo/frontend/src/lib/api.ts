@@ -82,6 +82,28 @@ export async function confirmAndAnalyze(
   return res.json();
 }
 
+export interface LeadData {
+  name: string;
+  email: string;
+  phone: string;
+  restaurant_name: string;
+  address: string;
+  top_concerns: string[];
+  estimated_leakage: number;
+}
+
+export async function submitLead(lead: LeadData): Promise<void> {
+  const res = await fetch(`${BASE}/leads`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(lead),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Submission failed');
+  }
+}
+
 export async function quickAnalyze(
   files: File[],
   restaurantName: string,

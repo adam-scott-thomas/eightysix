@@ -11,7 +11,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from app.api.upload import router
+from app.api.upload import router as upload_router
+from app.api.leads import router as leads_router
 
 app = FastAPI(
     title="EightySix Demo",
@@ -27,7 +28,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(router, prefix="/api/v1")
+app.include_router(upload_router, prefix="/api/v1")
+app.include_router(leads_router, prefix="/api/v1")
 
 # Serve frontend build if it exists
 _frontend_dist = Path(__file__).parent.parent / "frontend" / "dist"

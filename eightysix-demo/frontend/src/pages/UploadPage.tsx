@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { uploadFiles, type UploadResponse } from '../lib/api';
 
 interface Props {
-  onComplete: (result: UploadResponse) => void;
+  onComplete: (result: UploadResponse, restaurantName: string) => void;
   onBack: () => void;
 }
 
@@ -43,7 +43,7 @@ export function UploadPage({ onComplete, onBack }: Props) {
     setError('');
     try {
       const result = await uploadFiles(files, name || 'Restaurant');
-      onComplete(result);
+      onComplete(result, name || 'Restaurant');
     } catch (e: any) {
       setError(e.message || 'Upload failed.');
     } finally {
