@@ -70,7 +70,6 @@ function App() {
         <ResultsPage
           report={report}
           explanation={explanation}
-          internalReport={internalReport}
           onReset={handleReset}
         />
       )}

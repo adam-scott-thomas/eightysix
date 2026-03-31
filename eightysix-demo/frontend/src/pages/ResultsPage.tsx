@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import type { OwnerReport } from '../lib/api';
 
 interface Props {
   report: OwnerReport;
   explanation: string;
-  internalReport: Record<string, unknown> | null;
   onReset: () => void;
 }
 
@@ -26,8 +24,7 @@ function formatMoney(n: number): string {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
 }
 
-export function ResultsPage({ report, explanation, internalReport, onReset }: Props) {
-  const [showInternal, setShowInternal] = useState(false);
+export function ResultsPage({ report, explanation, onReset }: Props) {
   const conf = CONFIDENCE_STYLES[report.confidence] || CONFIDENCE_STYLES.low;
 
   return (
@@ -111,13 +108,7 @@ export function ResultsPage({ report, explanation, internalReport, onReset }: Pr
         )}
 
         {/* CTAs */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-          <button
-            onClick={() => setShowInternal(!showInternal)}
-            className="px-4 py-2.5 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors cursor-pointer"
-          >
-            {showInternal ? 'Hide' : 'View'} methodology
-          </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
           <a
             href="mailto:adam@adamscottthomas.com?subject=EightySix%20Full%20Audit%20Request"
             className="px-4 py-2.5 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors text-center"
@@ -131,16 +122,6 @@ export function ResultsPage({ report, explanation, internalReport, onReset }: Pr
             Book walkthrough
           </a>
         </div>
-
-        {/* Internal report */}
-        {showInternal && internalReport && (
-          <div className="bg-gray-900 rounded-xl p-5 border border-gray-800 mb-8">
-            <h3 className="text-sm font-semibold text-gray-400 mb-3">Internal analysis detail</h3>
-            <pre className="text-xs text-gray-400 overflow-x-auto max-h-96">
-              {JSON.stringify(internalReport, null, 2)}
-            </pre>
-          </div>
-        )}
 
         {/* Reset */}
         <div className="text-center">
