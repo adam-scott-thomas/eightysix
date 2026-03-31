@@ -43,16 +43,50 @@ def analyze_refund_abuse(
             unlinked_total += r.amount
 
     if not by_employee:
-        # No employee-linked refunds — can only report total
-        return RefundAbuseResult(
-            estimated_annual_impact=0.0,
-            observed_impact=total_refunds,
-            confidence=Confidence.LOW,
-            explanation=(
-                f"Total refunds/voids/comps: ${total_refunds:,.0f}, but no employee linkage available. "
-                "Cannot determine concentration."
-            ),
-        )
+        # No employee-linked refunds — can only estimate excess above baseline rate
+        # Industry baseline: ~2.5% refund rate. Only the excess is potential leakage.
+        BASELINE_REFUND_RATE = 0.025
+        if total_sales > 0:
+            actual_rate = total_refunds / total_sales
+            excess_rate = max(0.0, actual_rate - BASELINE_REFUND_RATE)
+            excess_amount = total_sales * excess_rate
+            if excess_amount <= 0:
+                return RefundAbuseResult(
+                    estimated_annual_impact=0.0,
+                    observed_impact=0.0,
+                    confidence=Confidence.LOW,
+                    explanation=(
+                        f"Total refunds/voids/comps: ${total_refunds:,.0f} "
+                        f"({actual_rate:.1%} of sales). "
+                        f"This is within the normal range ({BASELINE_REFUND_RATE:.1%} baseline). "
+                        "No employee linkage available for concentration analysis."
+                    ),
+                )
+            return RefundAbuseResult(
+                estimated_annual_impact=excess_amount,
+                observed_impact=excess_amount,
+                confidence=Confidence.LOW,
+                explanation=(
+                    f"Total refunds/voids/comps: ${total_refunds:,.0f} "
+                    f"({actual_rate:.1%} of sales, baseline {BASELINE_REFUND_RATE:.1%}). "
+                    f"Estimated excess above baseline: ${excess_amount:,.0f}. "
+                    "No employee linkage available — cannot pinpoint who. "
+                    "Upload employee-linked refund data for concentration analysis."
+                ),
+            )
+        else:
+            # No sales data either — can't compute a rate, report nothing
+            return RefundAbuseResult(
+                estimated_annual_impact=0.0,
+                observed_impact=0.0,
+                confidence=Confidence.LOW,
+                explanation=(
+                    f"Total refunds/voids/comps: ${total_refunds:,.0f}. "
+                    "No sales data available to compute refund rate, and no employee "
+                    "linkage for concentration analysis. Upload sales and employee-linked "
+                    "refund data for a meaningful estimate."
+                ),
+            )
 
     # Compute peer median rate
     employee_amounts = sorted(by_employee.values())

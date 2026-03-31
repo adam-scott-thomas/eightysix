@@ -63,9 +63,14 @@ def _template_explanation(report: LeakageReport) -> str:
 
     if report.findings:
         top = report.findings[0]
+        # Check if refund abuse actually has flagged employees
+        has_flagged = any(
+            "flagged" in str(e).lower() and "employee" in str(e).lower()
+            for e in top.evidence_refs
+        )
         cat_label = {
-            "overstaffing": "labor scheduling",
-            "refund_abuse": "refund activity for flagged employees",
+            "overstaffing": "labor scheduling on slower days",
+            "refund_abuse": "refund activity for flagged employees" if has_flagged else "your refund and void patterns",
             "ghost_labor": "time clock records and shift productivity",
             "menu_mix_margin_leak": "menu engineering and item promotion",
             "understaffing": "staffing levels during peak hours",
