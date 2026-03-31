@@ -27,20 +27,25 @@ async def client(app_instance):
 
 
 class TestLocations:
-    async def test_list_locations_empty(self, client):
-        """GET /api/v1/locations with no data returns an empty list."""
+    async def test_protected_endpoint_requires_auth(self, client):
+        """GET /api/v1/locations without a token returns 401."""
         resp = await client.get("/api/v1/locations")
+        assert resp.status_code == 401
+
+    async def test_list_locations_empty(self, client, auth_headers):
+        """GET /api/v1/locations with no data returns an empty list."""
+        resp = await client.get("/api/v1/locations", headers=auth_headers)
         assert resp.status_code == 200
         assert resp.json() == []
 
-    async def test_create_location(self, client):
+    async def test_create_location(self, client, auth_headers):
         """POST /api/v1/locations creates a location and returns 201."""
         payload = {
             "name": "Downtown Bistro",
             "timezone": "America/New_York",
             "default_hourly_rate": 18.00,
         }
-        resp = await client.post("/api/v1/locations", json=payload)
+        resp = await client.post("/api/v1/locations", json=payload, headers=auth_headers)
         assert resp.status_code == 201
         data = resp.json()
         assert data["name"] == "Downtown Bistro"
@@ -49,60 +54,60 @@ class TestLocations:
         # Verify the ID is a valid UUID string
         uuid.UUID(data["id"])
 
-    async def test_get_location(self, client):
+    async def test_get_location(self, client, auth_headers):
         """Create a location, then GET it by ID — fields should match."""
         payload = {
             "name": "Harbor Grill",
             "timezone": "America/Chicago",
         }
-        create_resp = await client.post("/api/v1/locations", json=payload)
+        create_resp = await client.post("/api/v1/locations", json=payload, headers=auth_headers)
         created = create_resp.json()
         loc_id = created["id"]
 
-        resp = await client.get(f"/api/v1/locations/{loc_id}")
+        resp = await client.get(f"/api/v1/locations/{loc_id}", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert data["id"] == loc_id
         assert data["name"] == "Harbor Grill"
         assert data["timezone"] == "America/Chicago"
 
-    async def test_patch_location(self, client):
+    async def test_patch_location(self, client, auth_headers):
         """PATCH a location's name — name should change."""
         create_resp = await client.post("/api/v1/locations", json={
             "name": "Old Name",
             "timezone": "America/Detroit",
-        })
+        }, headers=auth_headers)
         loc_id = create_resp.json()["id"]
 
         resp = await client.patch(f"/api/v1/locations/{loc_id}", json={
             "name": "New Name",
-        })
+        }, headers=auth_headers)
         assert resp.status_code == 200
         assert resp.json()["name"] == "New Name"
 
-    async def test_get_nonexistent_location(self, client):
+    async def test_get_nonexistent_location(self, client, auth_headers):
         """GET with a random UUID returns 404."""
         random_id = str(uuid.uuid4())
-        resp = await client.get(f"/api/v1/locations/{random_id}")
+        resp = await client.get(f"/api/v1/locations/{random_id}", headers=auth_headers)
         assert resp.status_code == 404
 
-    async def test_list_locations_after_create(self, client):
+    async def test_list_locations_after_create(self, client, auth_headers):
         """After creating a location, it appears in the list."""
         await client.post("/api/v1/locations", json={
             "name": "Test Spot",
             "timezone": "UTC",
-        })
-        resp = await client.get("/api/v1/locations")
+        }, headers=auth_headers)
+        resp = await client.get("/api/v1/locations", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert len(data) >= 1
         names = [loc["name"] for loc in data]
         assert "Test Spot" in names
 
-    async def test_patch_nonexistent_location(self, client):
+    async def test_patch_nonexistent_location(self, client, auth_headers):
         """PATCH with a random UUID returns 404."""
         random_id = str(uuid.uuid4())
         resp = await client.patch(f"/api/v1/locations/{random_id}", json={
             "name": "Should Fail",
-        })
+        }, headers=auth_headers)
         assert resp.status_code == 404

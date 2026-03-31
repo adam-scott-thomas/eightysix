@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: restaurant_chops
+      POSTGRES_DB: eightysix
       POSTGRES_USER: chops
       POSTGRES_PASSWORD: chops_dev_password
     ports:
@@ -10,7 +10,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U chops -d restaurant_chops"]
+      test: ["CMD-SHELL", "pg_isready -U chops -d eightysix"]
       interval: 5s
       timeout: 3s
       retries: 5
@@ -20,7 +20,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql+asyncpg://chops:chops_dev_password@db:5432/restaurant_chops
+      DATABASE_URL: postgresql+asyncpg://chops:chops_dev_password@db:5432/eightysix
       POS_PROVIDER: stub
       LABOR_PROVIDER: stub
     depends_on:

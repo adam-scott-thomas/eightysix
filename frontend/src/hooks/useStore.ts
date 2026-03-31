@@ -7,7 +7,20 @@ export interface Toast {
   message: string;
 }
 
+export interface AuthUser {
+  id: string;
+  email: string;
+  full_name: string;
+  role: string;
+}
+
 interface AppState {
+  // Auth
+  user: AuthUser | null;
+  token: string | null;
+  isAuthenticated: boolean;
+
+  // App
   mode: AppMode;
   locations: Location[];
   activeLocationId: string | null;
@@ -16,6 +29,11 @@ interface AppState {
   error: string | null;
   toasts: Toast[];
 
+  // Auth actions
+  loginSuccess: (user: AuthUser, token: string) => void;
+  logout: () => void;
+
+  // App actions
   setMode: (mode: AppMode) => void;
   setLocations: (locations: Location[]) => void;
   setActiveLocation: (id: string | null) => void;
@@ -28,7 +46,22 @@ interface AppState {
 
 let toastId = 0;
 
+// Restore auth from localStorage on init
+const savedToken = localStorage.getItem('rc_token');
+const savedUser = (() => {
+  try {
+    const raw = localStorage.getItem('rc_user');
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+})();
+
 export const useStore = create<AppState>((set) => ({
+  user: savedUser,
+  token: savedToken,
+  isAuthenticated: !!(savedToken && savedUser),
+
   mode: 'demo',
   locations: [],
   activeLocationId: null,
@@ -36,6 +69,17 @@ export const useStore = create<AppState>((set) => ({
   loading: false,
   error: null,
   toasts: [],
+
+  loginSuccess: (user, token) => {
+    localStorage.setItem('rc_token', token);
+    localStorage.setItem('rc_user', JSON.stringify(user));
+    set({ user, token, isAuthenticated: true });
+  },
+  logout: () => {
+    localStorage.removeItem('rc_token');
+    localStorage.removeItem('rc_user');
+    set({ user: null, token: null, isAuthenticated: false, locations: [], activeLocationId: null, dashboard: null });
+  },
 
   setMode: (mode) => set({ mode }),
   setLocations: (locations) => set({ locations }),

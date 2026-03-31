@@ -1,0 +1,117 @@
+{
+  "owner_report": {
+    "date_range_start": "2025-01-01",
+    "date_range_end": "2025-03-31",
+    "days_covered": 90,
+    "estimated_annual_leakage": 49662.68,
+    "average_monthly_leakage": 4138.56,
+    "top_categories": [
+      {
+        "category": "refund_abuse",
+        "estimated_annual_impact": 38271.47
+      },
+      {
+        "category": "overstaffing",
+        "estimated_annual_impact": 11391.21
+      }
+    ],
+    "confidence": "high"
+  },
+  "internal_report": {
+    "date_range_start": "2025-01-01",
+    "date_range_end": "2025-03-31",
+    "days_covered": 90,
+    "estimated_annual_leakage": 49662.68,
+    "average_monthly_leakage": 4138.56,
+    "top_categories": [
+      {
+        "category": "refund_abuse",
+        "estimated_annual_impact": 38271.47
+      },
+      {
+        "category": "overstaffing",
+        "estimated_annual_impact": 11391.21
+      }
+    ],
+    "confidence": "high",
+    "findings": [
+      {
+        "finding_id": "lf_002",
+        "category": "refund_abuse",
+        "estimated_impact_observed": 9436.8,
+        "estimated_impact_annualized": 38271.47,
+        "confidence": "high",
+        "explanation": "Total refunds/voids/comps: $14,236 (4.4% of sales) 1 employee(s) flagged for disproportionate refund activity. Excess above peer median: $9,437.",
+        "evidence_refs": [
+          "{'flagged_employees': [{'employee_id': 'Alex Kim', 'total_refunds': 9935.55, 'refund_count': 290, 'share_of_total': 0.6979, 'excess_vs_median': 9436.8}]}"
+        ],
+        "detail": {}
+      },
+      {
+        "finding_id": "lf_001",
+        "category": "overstaffing",
+        "estimated_impact_observed": 2808.79,
+        "estimated_impact_annualized": 11391.21,
+        "confidence": "high",
+        "explanation": "Found 41 days where labor cost exceeded baseline. Average excess: 2.1%. Total observed overstaffing leakage: $2,809.",
+        "evidence_refs": [
+          "{'date': '2025-01-04', 'sales': 4452.0, 'labor_cost': 990.93, 'actual_labor_pct': 0.2226, 'baseline_pct': 0.2104, 'excess_pct': 0.0122, 'excess_dollars': 54.29}",
+          "{'date': '2025-01-06', 'sales': 3333.0, 'labor_cost': 934.35, 'actual_labor_pct': 0.2803, 'baseline_pct': 0.2542, 'excess_pct': 0.0261, 'excess_dollars': 87.11}",
+          "{'date': '2025-01-09', 'sales': 3391.0, 'labor_cost': 727.38, 'actual_labor_pct': 0.2145, 'baseline_pct': 0.2008, 'excess_pct': 0.0137, 'excess_dollars': 46.49}",
+          "{'date': '2025-01-10', 'sales': 3866.0, 'labor_cost': 947.04, 'actual_labor_pct': 0.245, 'baseline_pct': 0.22, 'excess_pct': 0.025, 'excess_dollars': 96.49}",
+          "{'date': '2025-01-11', 'sales': 4752.0, 'labor_cost': 1127.7, 'actual_labor_pct': 0.2373, 'baseline_pct': 0.2104, 'excess_pct': 0.0269, 'excess_dollars': 127.94}"
+        ],
+        "detail": {}
+      }
+    ],
+    "data_completeness_score": 90,
+    "intake_metadata": {
+      "upload_id": "upl_9e64ad9b",
+      "restaurant_name": "Demo Grill",
+      "files_uploaded": 5,
+      "sheets_parsed": 5,
+      "recognized_reports": [
+        {
+          "file": "Daily_Sales_Report_Q1.csv",
+          "sheet": null,
+          "type": "sales_summary",
+          "confidence": 1.0
+        },
+        {
+          "file": "labor_cost_report.csv",
+          "sheet": null,
+          "type": "labor_summary",
+          "confidence": 0.85
+        },
+        {
+          "file": "Refund_Void_Report.csv",
+          "sheet": null,
+          "type": "refunds_voids_comps",
+          "confidence": 0.7
+        },
+        {
+          "file": "menu_performance_Q1.csv",
+          "sheet": null,
+          "type": "menu_mix",
+          "confidence": 1.0
+        },
+        {
+          "file": "timecard_export.csv",
+          "sheet": null,
+          "type": "punches",
+          "confidence": 1.0
+        }
+      ],
+      "missing_reports": [],
+      "records_extracted": {
+        "sales": 90,
+        "labor": 626,
+        "refunds": 454,
+        "menu_mix": 15,
+        "punches": 613
+      },
+      "mapping_warnings": []
+    },
+    "warnings": []
+  }
+}

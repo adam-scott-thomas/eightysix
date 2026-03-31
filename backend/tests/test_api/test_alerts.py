@@ -47,67 +47,67 @@ async def _create_alert(db: AsyncSession, location_id: uuid.UUID) -> Alert:
 
 
 class TestAlerts:
-    async def test_list_alerts_empty(self, client, location):
+    async def test_list_alerts_empty(self, client, auth_headers, location):
         """GET alerts with no data returns an empty list."""
         loc_id = str(location.id)
-        resp = await client.get(f"/api/v1/locations/{loc_id}/alerts")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/alerts", headers=auth_headers)
         assert resp.status_code == 200
         assert resp.json() == []
 
-    async def test_list_alerts_with_data(self, client, db, location):
+    async def test_list_alerts_with_data(self, client, auth_headers, db, location):
         """After creating an alert, it appears in the list."""
         await _create_alert(db, location.id)
         loc_id = str(location.id)
-        resp = await client.get(f"/api/v1/locations/{loc_id}/alerts")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/alerts", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert len(data) >= 1
         assert data[0]["alert_type"] == "understaffed"
         assert data[0]["status"] == "active"
 
-    async def test_acknowledge_alert(self, client, db, location):
+    async def test_acknowledge_alert(self, client, auth_headers, db, location):
         """PATCH /alerts/{id}/acknowledge changes status to acknowledged."""
         alert = await _create_alert(db, location.id)
         alert_id = str(alert.id)
 
-        resp = await client.patch(f"/api/v1/alerts/{alert_id}/acknowledge")
+        resp = await client.patch(f"/api/v1/alerts/{alert_id}/acknowledge", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert data["status"] == "acknowledged"
         assert data["acknowledged_at"] is not None
 
-    async def test_resolve_alert(self, client, db, location):
+    async def test_resolve_alert(self, client, auth_headers, db, location):
         """PATCH /alerts/{id}/resolve changes status to resolved."""
         alert = await _create_alert(db, location.id)
         alert_id = str(alert.id)
 
-        resp = await client.patch(f"/api/v1/alerts/{alert_id}/resolve")
+        resp = await client.patch(f"/api/v1/alerts/{alert_id}/resolve", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert data["status"] == "resolved"
         assert data["resolved_at"] is not None
 
-    async def test_nonexistent_alert_acknowledge(self, client):
+    async def test_nonexistent_alert_acknowledge(self, client, auth_headers):
         """PATCH acknowledge on a random UUID returns 404."""
         random_id = str(uuid.uuid4())
-        resp = await client.patch(f"/api/v1/alerts/{random_id}/acknowledge")
+        resp = await client.patch(f"/api/v1/alerts/{random_id}/acknowledge", headers=auth_headers)
         assert resp.status_code == 404
 
-    async def test_nonexistent_alert_resolve(self, client):
+    async def test_nonexistent_alert_resolve(self, client, auth_headers):
         """PATCH resolve on a random UUID returns 404."""
         random_id = str(uuid.uuid4())
-        resp = await client.patch(f"/api/v1/alerts/{random_id}/resolve")
+        resp = await client.patch(f"/api/v1/alerts/{random_id}/resolve", headers=auth_headers)
         assert resp.status_code == 404
 
-    async def test_acknowledge_then_resolve(self, client, db, location):
+    async def test_acknowledge_then_resolve(self, client, auth_headers, db, location):
         """An alert can be acknowledged and then resolved."""
         alert = await _create_alert(db, location.id)
         alert_id = str(alert.id)
 
-        ack_resp = await client.patch(f"/api/v1/alerts/{alert_id}/acknowledge")
+        ack_resp = await client.patch(f"/api/v1/alerts/{alert_id}/acknowledge", headers=auth_headers)
         assert ack_resp.status_code == 200
         assert ack_resp.json()["status"] == "acknowledged"
 
-        resolve_resp = await client.patch(f"/api/v1/alerts/{alert_id}/resolve")
+        resolve_resp = await client.patch(f"/api/v1/alerts/{alert_id}/resolve", headers=auth_headers)
         assert resolve_resp.status_code == 200
         assert resolve_resp.json()["status"] == "resolved"

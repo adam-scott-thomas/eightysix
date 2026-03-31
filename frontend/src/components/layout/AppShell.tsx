@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import type { AppMode, Location } from '../../types/api';
+import type { AuthUser } from '../../hooks/useStore';
 
 interface AppShellProps {
   mode: AppMode;
@@ -15,6 +16,8 @@ interface AppShellProps {
   dashboardStatus: 'green' | 'yellow' | 'red' | null;
   snapshotAt: string | null;
   loading: boolean;
+  user: AuthUser | null;
+  onLogout: () => void;
   children: ReactNode;
 }
 
@@ -30,6 +33,8 @@ export function AppShell({
   dashboardStatus,
   snapshotAt,
   loading,
+  user,
+  onLogout,
   children,
 }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -68,6 +73,8 @@ export function AppShell({
           snapshotAt={snapshotAt}
           loading={loading}
           onMenuToggle={() => setSidebarOpen(true)}
+          user={user}
+          onLogout={onLogout}
         />
         <main className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 bg-gray-50">
           {children}

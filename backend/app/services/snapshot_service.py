@@ -42,10 +42,8 @@ class SnapshotService:
         # 1. Readiness check
         readiness = await self.readiness_service.check_readiness(location_id, day_start, day_end)
 
-        # 2. Derivations
+        # 2. Derivations (raises NotFoundError if location missing)
         derivations = await self.derivation_service.compute_all(location_id, now, day_start, day_end)
-        if not derivations:
-            return {"error": "No data to compute"}
 
         # 3. Integrity flags
         integrity_results = derivations.get("integrity", [])

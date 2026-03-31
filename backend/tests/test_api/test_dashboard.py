@@ -28,29 +28,29 @@ async def client(app_instance):
 
 class TestDashboard:
     async def test_readiness_with_data(
-        self, client, location, seed_employees, seed_menu, seed_orders, seed_shifts
+        self, client, auth_headers, location, seed_employees, seed_menu, seed_orders, seed_shifts
     ):
         """GET /dashboard/readiness with seeded data returns ready or partial."""
         loc_id = str(location.id)
-        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/readiness")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/readiness", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert data["status"] in ("ready", "partial")
         assert "completeness_score" in data
         assert "domains" in data
 
-    async def test_current_404_before_recompute(self, client, location):
+    async def test_current_404_before_recompute(self, client, auth_headers, location):
         """GET /dashboard/current before any recompute returns 404."""
         loc_id = str(location.id)
-        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/current")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/current", headers=auth_headers)
         assert resp.status_code == 404
 
     async def test_recompute_returns_snapshot(
-        self, client, location, seed_employees, seed_menu, seed_orders, seed_shifts
+        self, client, auth_headers, location, seed_employees, seed_menu, seed_orders, seed_shifts
     ):
         """POST /dashboard/recompute returns a snapshot with all expected keys."""
         loc_id = str(location.id)
-        resp = await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute")
+        resp = await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         expected_keys = [
@@ -62,40 +62,40 @@ class TestDashboard:
             assert key in data, f"Missing key: {key}"
 
     async def test_current_after_recompute(
-        self, client, location, seed_employees, seed_menu, seed_orders, seed_shifts
+        self, client, auth_headers, location, seed_employees, seed_menu, seed_orders, seed_shifts
     ):
         """After recompute, GET /dashboard/current returns the snapshot."""
         loc_id = str(location.id)
 
         # First recompute
         recompute_resp = await client.post(
-            f"/api/v1/locations/{loc_id}/dashboard/recompute"
+            f"/api/v1/locations/{loc_id}/dashboard/recompute", headers=auth_headers
         )
         assert recompute_resp.status_code == 200
 
         # Then fetch current
-        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/current")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/current", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert "status" in data
         assert "summary" in data
         assert "throughput" in data
 
-    async def test_timeline_empty(self, client, location):
+    async def test_timeline_empty(self, client, auth_headers, location):
         """GET /dashboard/timeline with no snapshots returns an empty array."""
         loc_id = str(location.id)
-        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/timeline")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/timeline", headers=auth_headers)
         assert resp.status_code == 200
         assert resp.json() == []
 
     async def test_timeline_after_recompute(
-        self, client, location, seed_employees, seed_menu, seed_orders, seed_shifts
+        self, client, auth_headers, location, seed_employees, seed_menu, seed_orders, seed_shifts
     ):
         """After recompute, timeline includes at least one snapshot."""
         loc_id = str(location.id)
-        await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute")
+        await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute", headers=auth_headers)
 
-        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/timeline")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/dashboard/timeline", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert isinstance(data, list)
@@ -104,16 +104,17 @@ class TestDashboard:
         assert "status" in data[0]
 
     async def test_export_json(
-        self, client, location, seed_employees, seed_menu, seed_orders, seed_shifts
+        self, client, auth_headers, location, seed_employees, seed_menu, seed_orders, seed_shifts
     ):
         """GET /dashboard/export?format=json returns a JSON attachment."""
         loc_id = str(location.id)
         # Need a snapshot first
-        await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute")
+        await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute", headers=auth_headers)
 
         resp = await client.get(
             f"/api/v1/locations/{loc_id}/dashboard/export",
             params={"format": "json"},
+            headers=auth_headers,
         )
         assert resp.status_code == 200
         assert "content-disposition" in resp.headers
@@ -124,15 +125,16 @@ class TestDashboard:
         assert "summary" in data
 
     async def test_export_csv(
-        self, client, location, seed_employees, seed_menu, seed_orders, seed_shifts
+        self, client, auth_headers, location, seed_employees, seed_menu, seed_orders, seed_shifts
     ):
         """GET /dashboard/export?format=csv returns a CSV attachment."""
         loc_id = str(location.id)
-        await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute")
+        await client.post(f"/api/v1/locations/{loc_id}/dashboard/recompute", headers=auth_headers)
 
         resp = await client.get(
             f"/api/v1/locations/{loc_id}/dashboard/export",
             params={"format": "csv"},
+            headers=auth_headers,
         )
         assert resp.status_code == 200
         assert "content-disposition" in resp.headers

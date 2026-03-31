@@ -1,6 +1,8 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
+from app.core.dependencies import get_current_user, require_admin
 from app.api.v1.health import router as health_router
+from app.api.v1.auth import router as auth_router
 from app.api.v1.demo import router as demo_router
 from app.api.v1.locations import router as locations_router
 from app.api.v1.dashboard import router as dashboard_router
@@ -16,17 +18,25 @@ from app.api.v1.employees import router as employees_router
 from app.api.v1.export import router as export_router
 
 api_router = APIRouter()
+
+# Public — no auth required
 api_router.include_router(health_router)
-api_router.include_router(demo_router)
-api_router.include_router(locations_router)
-api_router.include_router(employees_router)
-api_router.include_router(dashboard_router)
-api_router.include_router(alerts_router)
-api_router.include_router(recommendations_router)
-api_router.include_router(integrity_router)
-api_router.include_router(observations_router)
-api_router.include_router(events_router)
-api_router.include_router(menu_router)
-api_router.include_router(orders_router)
-api_router.include_router(shifts_router)
-api_router.include_router(export_router)
+api_router.include_router(auth_router)
+
+# Protected — require valid JWT
+_authed = [Depends(get_current_user)]
+api_router.include_router(locations_router, dependencies=_authed)
+api_router.include_router(employees_router, dependencies=_authed)
+api_router.include_router(dashboard_router, dependencies=_authed)
+api_router.include_router(alerts_router, dependencies=_authed)
+api_router.include_router(recommendations_router, dependencies=_authed)
+api_router.include_router(integrity_router, dependencies=_authed)
+api_router.include_router(observations_router, dependencies=_authed)
+api_router.include_router(events_router, dependencies=_authed)
+api_router.include_router(menu_router, dependencies=_authed)
+api_router.include_router(orders_router, dependencies=_authed)
+api_router.include_router(shifts_router, dependencies=_authed)
+api_router.include_router(export_router, dependencies=_authed)
+
+# Demo — require admin
+api_router.include_router(demo_router, dependencies=[Depends(require_admin)])

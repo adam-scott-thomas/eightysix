@@ -97,9 +97,10 @@ class TestSnapshotService:
         result = await svc.recompute(location.id, NOW, DAY_START, DAY_END)
         assert isinstance(result["recommendations"], list)
 
-    async def test_recompute_returns_error_for_no_data(self, db):
-        """Nonexistent location should return an error dict."""
+    async def test_recompute_raises_for_nonexistent_location(self, db):
+        """Nonexistent location should raise NotFoundError."""
+        from app.core.exceptions import NotFoundError
         svc = SnapshotService(db)
         fake_id = uuid.UUID("ffffffff-ffff-ffff-ffff-ffffffffffff")
-        result = await svc.recompute(fake_id, NOW, DAY_START, DAY_END)
-        assert "error" in result
+        with pytest.raises(NotFoundError):
+            await svc.recompute(fake_id, NOW, DAY_START, DAY_END)

@@ -152,7 +152,7 @@ export function DemoPage() {
     try {
       const result = await api.quickAssess({
         staff_count: parseInt(qaStaff),
-        orders_today: parseInt(qaOrders),
+        orders_per_day: parseInt(qaOrders),
         avg_ticket: parseFloat(qaTicket),
         restaurant_name: qaName || undefined,
       });
@@ -320,14 +320,14 @@ export function DemoPage() {
             <div>
               <label className="block text-xs font-medium text-gray-500 mb-1">
                 <ShoppingCart className="w-3 h-3 inline mr-1" />
-                Orders today
+                Avg daily orders
               </label>
               <input
                 type="number"
                 min="1"
                 value={qaOrders}
                 onChange={(e) => setQaOrders(e.target.value)}
-                placeholder="e.g. 85"
+                placeholder="e.g. 200"
                 className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white"
               />
             </div>

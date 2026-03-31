@@ -2,11 +2,18 @@
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.config import settings
 from app.core.dependencies import get_db
+
+
+def _check_demo_mode():
+    """Dependency that blocks all demo endpoints when DEMO_MODE is off."""
+    if not settings.DEMO_MODE:
+        raise HTTPException(status_code=404, detail="Not found")
 from app.providers.registry import get_pos_provider, get_labor_provider
 from app.schemas.demo import LoadScenarioRequest, QuickAssessRequest, RecomputeRequest, SyncRequest
 from app.seed.generator import generate_assessment_scenario
@@ -15,7 +22,7 @@ from app.services.date_utils import detect_data_date_range
 from app.services.ingestion_service import IngestionService
 from app.services.snapshot_service import SnapshotService
 
-router = APIRouter(prefix="/api/v1/demo", tags=["demo"])
+router = APIRouter(prefix="/api/v1/demo", tags=["demo"], dependencies=[Depends(_check_demo_mode)])
 
 TRUNCATE_TABLES = [
     "dashboard_snapshots", "recommendations", "alerts", "integrity_flags",
@@ -118,7 +125,7 @@ async def quick_assess(
     # 2. Generate synthetic scenario from the 3 inputs
     scenario_data = generate_assessment_scenario(
         staff_count=req.staff_count,
-        orders_today=req.orders_today,
+        orders_per_day=req.orders_per_day,
         avg_ticket=req.avg_ticket,
         restaurant_name=req.restaurant_name,
     )

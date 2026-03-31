@@ -31,13 +31,24 @@ _BASE_MENU = [
 
 def generate_assessment_scenario(
     staff_count: int,
-    orders_today: int,
+    orders_per_day: int,
     avg_ticket: float,
     restaurant_name: str = "Your Restaurant",
 ) -> ScenarioData:
-    """Build a full ScenarioData from 3 walk-in inputs."""
+    """Build a full ScenarioData from 3 walk-in inputs.
+
+    orders_per_day is the average *daily* total. We generate only the fraction
+    that would have occurred by now, so the projection engine can extrapolate
+    to a meaningful EOD estimate.
+    """
     now = datetime.now(timezone.utc)
     open_time = now - timedelta(hours=8)
+
+    # Scale: generate only the orders that would have happened so far
+    biz_hours = 17  # 6 AM – 11 PM
+    hours_elapsed = min(biz_hours, max(1.0, (now - open_time).total_seconds() / 3600))
+    fraction = hours_elapsed / biz_hours
+    orders_so_far = max(1, round(orders_per_day * fraction))
 
     # -- Location --
     location = {
@@ -84,7 +95,7 @@ def generate_assessment_scenario(
     orders: list[OrderDTO] = []
     order_items: list[OrderItemDTO] = []
 
-    for i in range(orders_today):
+    for i in range(orders_so_far):
         # Triangular distribution biased toward midday
         t = (random.random() + random.random()) / 2.0
         order_time = open_time + timedelta(seconds=int(t * elapsed))

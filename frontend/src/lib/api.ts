@@ -1,16 +1,54 @@
 const BASE = '';
+const TIMEOUT_MS = 15000;
+const MAX_RETRIES = 2;
 
-async function request<T>(path: string, opts?: RequestInit): Promise<T> {
-  const res = await fetch(`${BASE}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
-    ...opts,
-  });
-  if (!res.ok) {
-    const body = await res.json().catch(() => null);
-    throw new Error(body?.detail ?? `${res.status} ${res.statusText}`);
-  }
-  return res.json();
+function getAuthHeaders(): Record<string, string> {
+  const token = localStorage.getItem('rc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
 }
+
+async function request<T>(path: string, opts?: RequestInit & { retries?: number }): Promise<T> {
+  const { retries = 0, ...fetchOpts } = opts ?? {};
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+  try {
+    const res = await fetch(`${BASE}${path}`, {
+      headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+      signal: controller.signal,
+      ...fetchOpts,
+    });
+
+    if (!res.ok) {
+      // Retry on 5xx for GET requests
+      if (res.status >= 500 && retries < MAX_RETRIES && (!fetchOpts.method || fetchOpts.method === 'GET')) {
+        await new Promise((r) => setTimeout(r, 1000 * (retries + 1)));
+        return request<T>(path, { ...opts, retries: retries + 1 });
+      }
+      if (res.status === 401) {
+        localStorage.removeItem('rc_token');
+        localStorage.removeItem('rc_user');
+      }
+      const body = await res.json().catch(() => null);
+      throw new Error(body?.detail ?? `${res.status} ${res.statusText}`);
+    }
+    return res.json();
+  } catch (err: any) {
+    if (err.name === 'AbortError') {
+      throw new Error('Request timed out');
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+// -- Auth --
+export const login = (email: string, password: string) =>
+  request<any>('/api/v1/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+export const register = (email: string, password: string, full_name: string) =>
+  request<any>('/api/v1/auth/register', { method: 'POST', body: JSON.stringify({ email, password, full_name }) });
+export const getMe = () => request<any>('/api/v1/auth/me');
 
 // -- Locations --
 export const getLocations = () => request<any[]>('/api/v1/locations');
@@ -74,7 +112,7 @@ export const demoReset = () =>
   request<any>('/api/v1/demo/reset', { method: 'POST' });
 export const demoLoadScenario = (scenario: string) =>
   request<any>('/api/v1/demo/load-scenario', { method: 'POST', body: JSON.stringify({ scenario }) });
-export const quickAssess = (data: { staff_count: number; orders_today: number; avg_ticket: number; restaurant_name?: string }) =>
+export const quickAssess = (data: { staff_count: number; orders_per_day: number; avg_ticket: number; restaurant_name?: string }) =>
   request<any>('/api/v1/demo/quick-assess', { method: 'POST', body: JSON.stringify(data) });
 export const demoRecompute = (locId: string) =>
   request<any>('/api/v1/demo/recompute', { method: 'POST', body: JSON.stringify({ location_id: locId }) });

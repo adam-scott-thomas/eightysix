@@ -133,8 +133,9 @@ class TestDerivationService:
         assert result["total_labor_hours"] == 0
 
     async def test_compute_nonexistent_location(self, db):
-        """Nonexistent location should return empty dict."""
+        """Nonexistent location should raise NotFoundError."""
+        from app.core.exceptions import NotFoundError
         svc = DerivationService(db)
         fake_id = uuid.UUID("ffffffff-ffff-ffff-ffff-ffffffffffff")
-        result = await svc.compute_all(fake_id, NOW, DAY_START, DAY_END)
-        assert result == {}
+        with pytest.raises(NotFoundError):
+            await svc.compute_all(fake_id, NOW, DAY_START, DAY_END)

@@ -45,7 +45,7 @@ export function Sidebar({ mode, onModeChange, activePage, onNavigate, isOpen, on
         <div className="flex items-center gap-3">
           <UtensilsCrossed className="w-6 h-6 text-blue-400 shrink-0" />
           <span className="text-sm font-semibold tracking-tight truncate">
-            Restaurant Chops
+            EightySix
           </span>
         </div>
         <button

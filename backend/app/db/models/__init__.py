@@ -10,6 +10,7 @@ from app.db.models.integrity_flag import IntegrityFlag
 from app.db.models.alert import Alert
 from app.db.models.recommendation import Recommendation
 from app.db.models.dashboard_snapshot import DashboardSnapshot
+from app.db.models.user import User
 
 __all__ = [
     "Location",
@@ -24,4 +25,5 @@ __all__ = [
     "Alert",
     "Recommendation",
     "DashboardSnapshot",
+    "User",
 ]

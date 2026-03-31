@@ -9,17 +9,27 @@ import { RecommendationsPage } from './pages/RecommendationsPage';
 import { IntegrityPage } from './pages/IntegrityPage';
 import { DataInputPage } from './pages/DataInputPage';
 import { DemoPage } from './pages/DemoPage';
+import { LandingPage } from './pages/LandingPage';
+import { AuthPage } from './pages/AuthPage';
 
 function App() {
   const store = useStore();
-  const [page, setPage] = useState('dashboard');
+  const [page, setPage] = useState('landing');
 
+  // Load locations when authenticated
   useEffect(() => {
-    api.getLocations().then(store.setLocations).catch(() => {});
-  }, []);
+    if (store.isAuthenticated) {
+      api.getLocations().then(store.setLocations).catch((err) => {
+        if (err.message?.includes('401')) {
+          store.logout();
+        }
+      });
+    }
+  }, [store.isAuthenticated]);
 
+  // Load dashboard when location changes
   useEffect(() => {
-    if (store.activeLocationId) {
+    if (store.activeLocationId && store.isAuthenticated) {
       store.setLoading(true);
       api
         .getDashboard(store.activeLocationId)
@@ -42,6 +52,31 @@ function App() {
       store.setLoading(false);
     }
   };
+
+  const handleLogout = () => {
+    store.logout();
+    setPage('landing');
+  };
+
+  // Not authenticated — show auth or landing
+  if (!store.isAuthenticated) {
+    if (page === 'auth') {
+      return (
+        <>
+          <AuthPage />
+          <Toasts />
+        </>
+      );
+    }
+    return <LandingPage onEnterApp={() => setPage('auth')} />;
+  }
+
+  // Authenticated but on landing/auth — go to demo
+  if (page === 'landing' || page === 'auth') {
+    // Use setTimeout to avoid setState-during-render
+    setTimeout(() => setPage('demo'), 0);
+    return null;
+  }
 
   const renderPage = () => {
     switch (page) {
@@ -75,6 +110,8 @@ function App() {
       dashboardStatus={store.dashboard?.status ?? null}
       snapshotAt={store.dashboard?.snapshot_at ?? null}
       loading={store.loading}
+      user={store.user}
+      onLogout={handleLogout}
     >
       {store.error && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">

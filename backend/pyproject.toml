@@ -1,5 +1,5 @@
 [project]
-name = "restaurant-chops"
+name = "eightysix"
 version = "0.1.0"
 description = "Restaurant Operations Backend"
 requires-python = ">=3.12"

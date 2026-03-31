@@ -48,68 +48,68 @@ async def _create_recommendation(db: AsyncSession, location_id: uuid.UUID) -> Re
 
 
 class TestRecommendations:
-    async def test_list_recommendations_empty(self, client, location):
+    async def test_list_recommendations_empty(self, client, auth_headers, location):
         """GET recommendations with no data returns an empty list."""
         loc_id = str(location.id)
-        resp = await client.get(f"/api/v1/locations/{loc_id}/recommendations")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/recommendations", headers=auth_headers)
         assert resp.status_code == 200
         assert resp.json() == []
 
-    async def test_list_recommendations_with_data(self, client, db, location):
+    async def test_list_recommendations_with_data(self, client, auth_headers, db, location):
         """After creating a recommendation, it appears in the list."""
         await _create_recommendation(db, location.id)
         loc_id = str(location.id)
-        resp = await client.get(f"/api/v1/locations/{loc_id}/recommendations")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/recommendations", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert len(data) >= 1
         assert data[0]["category"] == "staffing"
         assert data[0]["status"] == "pending"
 
-    async def test_apply_recommendation(self, client, db, location):
+    async def test_apply_recommendation(self, client, auth_headers, db, location):
         """PATCH /recommendations/{id}/apply changes status to applied."""
         rec = await _create_recommendation(db, location.id)
         rec_id = str(rec.id)
 
-        resp = await client.patch(f"/api/v1/recommendations/{rec_id}/apply")
+        resp = await client.patch(f"/api/v1/recommendations/{rec_id}/apply", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert data["status"] == "applied"
         assert data["applied_at"] is not None
 
-    async def test_dismiss_recommendation(self, client, db, location):
+    async def test_dismiss_recommendation(self, client, auth_headers, db, location):
         """PATCH /recommendations/{id}/dismiss changes status to dismissed."""
         rec = await _create_recommendation(db, location.id)
         rec_id = str(rec.id)
 
-        resp = await client.patch(f"/api/v1/recommendations/{rec_id}/dismiss")
+        resp = await client.patch(f"/api/v1/recommendations/{rec_id}/dismiss", headers=auth_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert data["status"] == "dismissed"
         assert data["dismissed_at"] is not None
 
-    async def test_nonexistent_recommendation_apply(self, client):
+    async def test_nonexistent_recommendation_apply(self, client, auth_headers):
         """PATCH apply on a random UUID returns 404."""
         random_id = str(uuid.uuid4())
-        resp = await client.patch(f"/api/v1/recommendations/{random_id}/apply")
+        resp = await client.patch(f"/api/v1/recommendations/{random_id}/apply", headers=auth_headers)
         assert resp.status_code == 404
 
-    async def test_nonexistent_recommendation_dismiss(self, client):
+    async def test_nonexistent_recommendation_dismiss(self, client, auth_headers):
         """PATCH dismiss on a random UUID returns 404."""
         random_id = str(uuid.uuid4())
-        resp = await client.patch(f"/api/v1/recommendations/{random_id}/dismiss")
+        resp = await client.patch(f"/api/v1/recommendations/{random_id}/dismiss", headers=auth_headers)
         assert resp.status_code == 404
 
-    async def test_applied_recommendation_not_in_pending_list(self, client, db, location):
+    async def test_applied_recommendation_not_in_pending_list(self, client, auth_headers, db, location):
         """After applying a recommendation, it no longer appears in the pending list."""
         rec = await _create_recommendation(db, location.id)
         rec_id = str(rec.id)
         loc_id = str(location.id)
 
         # Apply it
-        await client.patch(f"/api/v1/recommendations/{rec_id}/apply")
+        await client.patch(f"/api/v1/recommendations/{rec_id}/apply", headers=auth_headers)
 
         # Pending list should be empty (default status filter is 'pending')
-        resp = await client.get(f"/api/v1/locations/{loc_id}/recommendations")
+        resp = await client.get(f"/api/v1/locations/{loc_id}/recommendations", headers=auth_headers)
         assert resp.status_code == 200
         assert resp.json() == []

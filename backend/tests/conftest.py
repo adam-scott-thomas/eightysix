@@ -1,8 +1,13 @@
+import os
 import sqlite3
 import sys
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+
+# Set required env vars before any app imports
+os.environ.setdefault("DATABASE_URL", "sqlite+aiosqlite:///:memory:")
+os.environ.setdefault("JWT_SECRET", "test-secret-not-for-production")
 
 import pytest
 import pytest_asyncio
@@ -67,6 +72,38 @@ async def db(engine):
     async with session_factory() as session:
         yield session
         await session.rollback()
+
+
+@pytest_asyncio.fixture
+async def test_user(db: AsyncSession):
+    """Create a regular test user and return (user, token)."""
+    from app.services.auth_service import create_user, create_access_token
+    user = await create_user(db, email="test@example.com", password="testpass123", full_name="Test User")
+    token = create_access_token(str(user.id), user.role)
+    return user, token
+
+
+@pytest_asyncio.fixture
+async def admin_user(db: AsyncSession):
+    """Create an admin test user and return (user, token)."""
+    from app.services.auth_service import create_user, create_access_token
+    user = await create_user(db, email="admin@example.com", password="adminpass123", full_name="Admin User", role="admin")
+    token = create_access_token(str(user.id), user.role)
+    return user, token
+
+
+@pytest.fixture
+def auth_headers(test_user):
+    """Auth headers for a regular user."""
+    _, token = test_user
+    return {"Authorization": f"Bearer {token}"}
+
+
+@pytest.fixture
+def admin_headers(admin_user):
+    """Auth headers for an admin user."""
+    _, token = admin_user
+    return {"Authorization": f"Bearer {token}"}
 
 
 @pytest_asyncio.fixture

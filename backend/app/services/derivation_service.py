@@ -45,7 +45,8 @@ class DerivationService:
         """Run all derivations and return a dict of results."""
         location = await self.db.get(Location, location_id)
         if not location:
-            return {}
+            from app.core.exceptions import NotFoundError
+            raise NotFoundError("Location", str(location_id))
 
         default_rate = float(location.default_hourly_rate or 15.00)
         thresholds = merge_thresholds(location.thresholds_json)

@@ -1,0 +1,455 @@
+Check Closed,Server,Action Type,Amount $,Order #,Reason
+01/01/2025 06:15 PM,Taylor Jones,Comp,$28.13,ORD-34800,Wrong item
+01/01/2025 06:57 PM,Riley Clark,Comp,$9.37,ORD-38568,Customer request
+01/01/2025 05:57 PM,Alex Kim,Refund,$37.34,ORD-22056,
+01/01/2025 06:31 PM,Alex Kim,Void,$54.37,ORD-78626,
+01/02/2025 09:54 PM,Taylor Jones,Comp,$31.33,ORD-57110,Wrong item
+01/02/2025 12:43 PM,Quinn Martin,Comp,$42.19,ORD-75149,Customer request
+01/02/2025 06:34 PM,Alex Kim,Refund,$16.56,ORD-22788,
+01/02/2025 09:45 PM,Alex Kim,Refund,$44.96,ORD-75730,
+01/03/2025 10:13 PM,Sam Patel,Refund,$34.80,ORD-36714,
+01/03/2025 09:27 PM,Jordan Brown,Refund,$37.26,ORD-71576,Wrong item
+01/03/2025 10:15 PM,Alex Kim,Refund,$19.47,ORD-23984,
+01/03/2025 09:05 PM,Alex Kim,Void,$29.40,ORD-85366,
+01/04/2025 09:55 PM,Jordan Brown,Void,$43.60,ORD-36157,Duplicate
+01/04/2025 01:42 PM,Taylor Jones,Void,$31.36,ORD-43191,Duplicate
+01/04/2025 08:00 PM,Alex Kim,Refund,$26.04,ORD-50643,
+01/04/2025 10:42 PM,Alex Kim,Refund,$24.69,ORD-34523,
+01/04/2025 08:26 PM,Alex Kim,Refund,$53.08,ORD-65711,
+01/04/2025 08:02 PM,Alex Kim,Refund,$41.34,ORD-62840,
+01/05/2025 08:02 PM,Alex Kim,Comp,$21.52,ORD-40384,Wrong item
+01/05/2025 08:20 PM,Alex Kim,Void,$35.84,ORD-54962,
+01/05/2025 07:01 PM,Alex Kim,Void,$48.38,ORD-22981,
+01/05/2025 06:04 PM,Alex Kim,Refund,$53.87,ORD-19110,
+01/05/2025 07:11 PM,Alex Kim,Void,$29.09,ORD-52883,
+01/06/2025 09:15 PM,Maria Garcia,Void,$37.24,ORD-51941,Cold food
+01/06/2025 05:50 PM,James Wilson,Refund,$16.21,ORD-46932,
+01/06/2025 06:03 PM,Alex Kim,Refund,$40.83,ORD-99808,
+01/06/2025 05:45 PM,Alex Kim,Void,$20.17,ORD-94089,
+01/07/2025 10:11 PM,Taylor Jones,Refund,$34.13,ORD-53593,Duplicate
+01/07/2025 05:41 PM,Alex Kim,Void,$39.24,ORD-77947,
+01/07/2025 09:33 PM,Alex Kim,Refund,$25.40,ORD-60850,
+01/07/2025 09:07 PM,Alex Kim,Void,$43.67,ORD-21932,
+01/07/2025 08:05 PM,Alex Kim,Refund,$27.31,ORD-41297,
+01/08/2025 08:34 PM,Casey Davis,Void,$22.30,ORD-86479,Duplicate
+01/08/2025 09:05 PM,Alex Kim,Void,$29.00,ORD-23309,
+01/08/2025 08:45 PM,Alex Kim,Refund,$51.69,ORD-79649,
+01/09/2025 02:22 PM,Morgan Lee,Void,$35.37,ORD-89494,
+01/09/2025 01:35 PM,James Wilson,Void,$31.75,ORD-46661,
+01/09/2025 05:08 PM,Taylor Jones,Comp,$11.43,ORD-43762,Cold food
+01/09/2025 06:50 PM,Alex Kim,Void,$24.51,ORD-44164,
+01/09/2025 10:53 PM,Alex Kim,Void,$37.38,ORD-75639,
+01/09/2025 09:36 PM,Alex Kim,Void,$36.09,ORD-42521,
+01/09/2025 09:32 PM,Alex Kim,Refund,$30.43,ORD-99594,
+01/10/2025 08:17 PM,Alex Kim,Refund,$35.96,ORD-79159,
+01/10/2025 05:22 PM,Alex Kim,Void,$31.35,ORD-19780,
+01/10/2025 07:20 PM,Alex Kim,Refund,$54.19,ORD-44383,
+01/10/2025 10:19 PM,Alex Kim,Refund,$53.30,ORD-37984,
+01/10/2025 06:11 PM,Alex Kim,Refund,$36.60,ORD-61076,
+01/11/2025 11:27 AM,Sam Patel,Void,$26.95,ORD-49251,Duplicate
+01/11/2025 08:08 PM,Alex Kim,Void,$48.81,ORD-69345,
+01/11/2025 09:32 PM,Alex Kim,Refund,$45.75,ORD-65755,
+01/11/2025 10:16 PM,Alex Kim,Void,$46.09,ORD-21389,
+01/12/2025 02:13 PM,Casey Davis,Refund,$16.39,ORD-24541,Wrong item
+01/12/2025 08:43 PM,Alex Kim,Void,$48.82,ORD-75941,
+01/12/2025 08:41 PM,Alex Kim,Void,$35.58,ORD-26265,
+01/12/2025 08:08 PM,Alex Kim,Void,$38.44,ORD-41815,
+01/12/2025 07:40 PM,Alex Kim,Void,$54.87,ORD-13069,
+01/13/2025 03:25 PM,Sam Patel,Void,$24.07,ORD-82520,Wrong item
+01/13/2025 02:12 PM,Riley Clark,Comp,$43.79,ORD-88025,Wrong item
+01/13/2025 01:39 PM,Riley Clark,Refund,$16.14,ORD-73659,
+01/13/2025 06:14 PM,Alex Kim,Void,$15.51,ORD-37719,
+01/13/2025 05:29 PM,Alex Kim,Void,$43.58,ORD-78110,
+01/14/2025 02:26 PM,Quinn Martin,Comp,$11.24,ORD-50403,
+01/14/2025 04:17 PM,Alex Kim,Comp,$21.48,ORD-35768,Wrong item
+01/14/2025 06:10 PM,Alex Kim,Refund,$22.01,ORD-99611,
+01/14/2025 09:37 PM,Alex Kim,Refund,$28.98,ORD-74901,
+01/14/2025 07:46 PM,Alex Kim,Void,$33.82,ORD-93934,
+01/15/2025 09:18 PM,Quinn Martin,Refund,$10.70,ORD-86610,Duplicate
+01/15/2025 07:25 PM,Maria Garcia,Comp,$34.68,ORD-69764,Duplicate
+01/15/2025 05:43 PM,Taylor Jones,Refund,$11.19,ORD-51974,Customer request
+01/15/2025 07:48 PM,Alex Kim,Refund,$41.01,ORD-30432,
+01/15/2025 10:15 PM,Alex Kim,Void,$40.72,ORD-59125,
+01/16/2025 09:32 PM,Alex Kim,Comp,$22.78,ORD-23006,Duplicate
+01/16/2025 03:20 PM,Quinn Martin,Refund,$9.84,ORD-34428,
+01/16/2025 06:00 PM,Alex Kim,Void,$44.11,ORD-90663,
+01/16/2025 06:00 PM,Alex Kim,Void,$33.91,ORD-22485,
+01/16/2025 08:38 PM,Alex Kim,Refund,$32.57,ORD-17477,
+01/17/2025 08:27 PM,Sam Patel,Void,$9.13,ORD-51004,Cold food
+01/17/2025 10:49 PM,James Wilson,Refund,$43.78,ORD-33931,
+01/17/2025 06:14 PM,Alex Kim,Void,$46.89,ORD-60654,
+01/17/2025 07:29 PM,Alex Kim,Void,$49.44,ORD-28450,
+01/17/2025 09:54 PM,Alex Kim,Void,$18.79,ORD-10393,
+01/17/2025 06:48 PM,Alex Kim,Refund,$24.14,ORD-99761,
+01/18/2025 10:52 PM,Sam Patel,Void,$44.56,ORD-23488,Duplicate
+01/18/2025 10:46 PM,Alex Kim,Refund,$54.19,ORD-33678,
+01/18/2025 05:30 PM,Alex Kim,Refund,$40.64,ORD-53701,
+01/19/2025 09:08 PM,Quinn Martin,Comp,$32.19,ORD-21589,
+01/19/2025 06:16 PM,Morgan Lee,Comp,$27.02,ORD-56618,Cold food
+01/19/2025 08:06 PM,Alex Kim,Void,$16.01,ORD-82152,
+01/19/2025 08:55 PM,Alex Kim,Void,$21.49,ORD-51940,
+01/19/2025 10:12 PM,Alex Kim,Refund,$48.46,ORD-13298,
+01/19/2025 10:14 PM,Alex Kim,Void,$35.51,ORD-18837,
+01/20/2025 11:10 AM,Quinn Martin,Void,$40.23,ORD-31157,
+01/20/2025 07:20 PM,Sam Patel,Comp,$9.66,ORD-87455,Duplicate
+01/20/2025 07:02 PM,Alex Kim,Void,$25.61,ORD-59770,
+01/20/2025 05:52 PM,Alex Kim,Refund,$54.29,ORD-95110,
+01/20/2025 06:54 PM,Alex Kim,Refund,$53.44,ORD-31136,
+01/20/2025 06:41 PM,Alex Kim,Void,$30.40,ORD-28892,
+01/21/2025 07:56 PM,Alex Kim,Comp,$30.26,ORD-21287,Duplicate
+01/21/2025 12:51 PM,James Wilson,Comp,$9.08,ORD-60161,Customer request
+01/21/2025 05:15 PM,Alex Kim,Void,$34.05,ORD-73696,
+01/21/2025 09:39 PM,Alex Kim,Refund,$35.29,ORD-72427,
+01/21/2025 08:34 PM,Alex Kim,Refund,$48.30,ORD-69455,
+01/22/2025 10:55 PM,Morgan Lee,Refund,$30.72,ORD-91420,
+01/22/2025 08:38 PM,Taylor Jones,Refund,$19.77,ORD-31978,Wrong item
+01/22/2025 09:56 PM,Casey Davis,Refund,$25.91,ORD-36866,
+01/22/2025 05:14 PM,Alex Kim,Void,$32.56,ORD-52713,
+01/22/2025 09:43 PM,Alex Kim,Refund,$17.52,ORD-70819,
+01/22/2025 09:00 PM,Alex Kim,Refund,$42.62,ORD-88468,
+01/23/2025 04:08 PM,Taylor Jones,Refund,$20.33,ORD-32349,Customer request
+01/23/2025 11:52 AM,Maria Garcia,Refund,$27.97,ORD-70470,Wrong item
+01/23/2025 01:16 PM,Taylor Jones,Refund,$16.40,ORD-75409,
+01/23/2025 05:21 PM,Alex Kim,Refund,$25.42,ORD-18049,
+01/23/2025 05:08 PM,Alex Kim,Void,$22.09,ORD-68739,
+01/23/2025 10:01 PM,Alex Kim,Refund,$31.87,ORD-75091,
+01/23/2025 06:38 PM,Alex Kim,Void,$45.95,ORD-22736,
+01/24/2025 03:30 PM,Quinn Martin,Void,$29.95,ORD-11747,Wrong item
+01/24/2025 02:37 PM,Jordan Brown,Refund,$43.65,ORD-26825,Wrong item
+01/24/2025 01:49 PM,Riley Clark,Void,$26.43,ORD-71776,Customer request
+01/24/2025 09:03 PM,Alex Kim,Refund,$18.52,ORD-80338,
+01/24/2025 06:28 PM,Alex Kim,Void,$53.94,ORD-38862,
+01/24/2025 10:37 PM,Alex Kim,Void,$32.35,ORD-70573,
+01/25/2025 10:21 PM,James Wilson,Comp,$14.19,ORD-81487,Cold food
+01/25/2025 06:31 PM,Riley Clark,Comp,$8.88,ORD-77775,Wrong item
+01/25/2025 08:46 PM,Alex Kim,Void,$19.62,ORD-55031,
+01/25/2025 09:24 PM,Alex Kim,Void,$50.55,ORD-50746,
+01/25/2025 09:01 PM,Alex Kim,Refund,$37.15,ORD-73670,
+01/25/2025 10:00 PM,Alex Kim,Void,$19.41,ORD-58550,
+01/26/2025 01:21 PM,Casey Davis,Refund,$9.64,ORD-21658,Duplicate
+01/26/2025 03:20 PM,Quinn Martin,Void,$37.85,ORD-10997,Customer request
+01/26/2025 11:24 AM,Jordan Brown,Void,$43.82,ORD-92324,Cold food
+01/26/2025 10:43 PM,Alex Kim,Void,$37.16,ORD-43140,
+01/26/2025 08:16 PM,Alex Kim,Void,$30.79,ORD-34262,
+01/26/2025 08:20 PM,Alex Kim,Refund,$36.78,ORD-35627,
+01/27/2025 12:09 PM,Riley Clark,Comp,$27.36,ORD-31123,Wrong item
+01/27/2025 10:28 PM,Taylor Jones,Void,$29.64,ORD-68379,
+01/27/2025 09:33 PM,Sam Patel,Void,$30.57,ORD-36802,
+01/27/2025 08:06 PM,Alex Kim,Void,$36.74,ORD-35747,
+01/27/2025 10:32 PM,Alex Kim,Void,$48.70,ORD-93806,
+01/27/2025 10:02 PM,Alex Kim,Refund,$37.72,ORD-90890,
+01/28/2025 09:59 PM,Sam Patel,Void,$40.81,ORD-66178,Customer request
+01/28/2025 04:51 PM,Quinn Martin,Void,$33.73,ORD-17840,Customer request
+01/28/2025 06:06 PM,Alex Kim,Void,$21.10,ORD-93736,
+01/28/2025 07:40 PM,Alex Kim,Void,$18.64,ORD-63820,
+01/28/2025 09:51 PM,Alex Kim,Void,$25.99,ORD-89806,
+01/29/2025 03:45 PM,Jordan Brown,Void,$29.50,ORD-41910,
+01/29/2025 05:05 PM,Casey Davis,Refund,$13.77,ORD-51610,Wrong item
+01/29/2025 05:52 PM,Alex Kim,Refund,$16.36,ORD-13695,
+01/29/2025 05:15 PM,Alex Kim,Refund,$33.03,ORD-98400,
+01/29/2025 05:18 PM,Alex Kim,Refund,$20.84,ORD-13839,
+01/30/2025 07:34 PM,Morgan Lee,Comp,$39.06,ORD-75451,Wrong item
+01/30/2025 02:05 PM,Casey Davis,Refund,$36.68,ORD-96752,Cold food
+01/30/2025 04:28 PM,Riley Clark,Refund,$40.78,ORD-60660,
+01/30/2025 08:20 PM,Alex Kim,Void,$26.76,ORD-32378,
+01/30/2025 10:52 PM,Alex Kim,Void,$39.58,ORD-92513,
+01/30/2025 09:33 PM,Alex Kim,Refund,$29.72,ORD-58764,
+01/31/2025 01:45 PM,Taylor Jones,Refund,$28.65,ORD-70669,Customer request
+01/31/2025 05:45 PM,Quinn Martin,Comp,$9.16,ORD-18048,
+01/31/2025 08:23 PM,Alex Kim,Void,$14.64,ORD-97838,Duplicate
+01/31/2025 07:20 PM,Alex Kim,Refund,$43.52,ORD-23822,
+01/31/2025 08:40 PM,Alex Kim,Refund,$25.16,ORD-68608,
+02/01/2025 09:27 PM,Taylor Jones,Void,$32.00,ORD-54840,Cold food
+02/01/2025 07:10 PM,Alex Kim,Refund,$41.58,ORD-12261,
+02/01/2025 07:04 PM,Alex Kim,Refund,$48.04,ORD-77704,
+02/01/2025 08:45 PM,Alex Kim,Refund,$51.10,ORD-76916,
+02/01/2025 05:37 PM,Alex Kim,Void,$42.68,ORD-96352,
+02/02/2025 01:54 PM,Casey Davis,Void,$15.82,ORD-73907,Cold food
+02/02/2025 06:50 PM,Alex Kim,Refund,$15.92,ORD-90771,
+02/02/2025 07:12 PM,Alex Kim,Refund,$49.63,ORD-96636,
+02/03/2025 03:38 PM,Sam Patel,Refund,$22.43,ORD-61298,Cold food
+02/03/2025 02:39 PM,Sam Patel,Refund,$23.63,ORD-36159,Duplicate
+02/03/2025 05:17 PM,Riley Clark,Comp,$10.99,ORD-88216,
+02/03/2025 09:54 PM,Alex Kim,Void,$48.65,ORD-57489,
+02/03/2025 09:17 PM,Alex Kim,Void,$45.89,ORD-83300,
+02/03/2025 09:16 PM,Alex Kim,Void,$41.94,ORD-13255,
+02/03/2025 08:06 PM,Alex Kim,Refund,$29.19,ORD-33674,
+02/04/2025 12:26 PM,Morgan Lee,Comp,$16.96,ORD-41997,Duplicate
+02/04/2025 05:51 PM,Alex Kim,Void,$27.21,ORD-70964,
+02/04/2025 10:59 PM,Alex Kim,Refund,$30.39,ORD-31860,
+02/04/2025 10:40 PM,Alex Kim,Refund,$20.41,ORD-93056,
+02/04/2025 09:44 PM,Alex Kim,Void,$35.10,ORD-83996,
+02/05/2025 05:12 PM,Riley Clark,Comp,$20.57,ORD-58648,Cold food
+02/05/2025 05:21 PM,Riley Clark,Comp,$18.17,ORD-18090,Duplicate
+02/05/2025 08:06 PM,Sam Patel,Refund,$36.23,ORD-87894,Customer request
+02/05/2025 08:35 PM,Alex Kim,Void,$28.36,ORD-31724,
+02/05/2025 10:34 PM,Alex Kim,Void,$24.18,ORD-54648,
+02/05/2025 10:28 PM,Alex Kim,Refund,$46.00,ORD-19313,
+02/06/2025 06:02 PM,Taylor Jones,Comp,$23.69,ORD-88668,Customer request
+02/06/2025 08:59 PM,Alex Kim,Refund,$39.16,ORD-83465,
+02/06/2025 07:58 PM,Alex Kim,Void,$31.56,ORD-67665,
+02/06/2025 09:46 PM,Alex Kim,Refund,$21.43,ORD-39546,
+02/06/2025 07:37 PM,Alex Kim,Void,$39.87,ORD-82835,
+02/07/2025 06:43 PM,Sam Patel,Comp,$24.40,ORD-15420,Duplicate
+02/07/2025 09:39 PM,Jordan Brown,Comp,$35.73,ORD-82594,Wrong item
+02/07/2025 07:39 PM,Alex Kim,Comp,$40.58,ORD-75678,
+02/07/2025 06:26 PM,Alex Kim,Refund,$49.28,ORD-37922,
+02/07/2025 10:03 PM,Alex Kim,Refund,$22.89,ORD-34498,
+02/07/2025 07:24 PM,Alex Kim,Void,$21.29,ORD-32436,
+02/07/2025 07:14 PM,Alex Kim,Refund,$45.76,ORD-63343,
+02/08/2025 04:47 PM,Riley Clark,Comp,$10.05,ORD-96902,Customer request
+02/08/2025 09:28 PM,Quinn Martin,Refund,$33.07,ORD-98985,Cold food
+02/08/2025 02:00 PM,Riley Clark,Refund,$43.90,ORD-89470,Cold food
+02/08/2025 05:27 PM,Alex Kim,Void,$47.05,ORD-74880,
+02/08/2025 05:02 PM,Alex Kim,Refund,$33.90,ORD-26925,
+02/09/2025 07:29 PM,Sam Patel,Void,$11.75,ORD-84083,Duplicate
+02/09/2025 05:29 PM,Alex Kim,Void,$16.36,ORD-19704,
+02/09/2025 10:02 PM,Alex Kim,Void,$33.41,ORD-30038,
+02/09/2025 07:51 PM,Alex Kim,Void,$49.53,ORD-90660,
+02/10/2025 07:34 PM,Alex Kim,Void,$23.54,ORD-70204,Customer request
+02/10/2025 11:27 AM,Taylor Jones,Comp,$15.46,ORD-81418,Customer request
+02/10/2025 09:00 PM,Alex Kim,Refund,$42.04,ORD-59978,
+02/10/2025 09:04 PM,Alex Kim,Void,$32.86,ORD-35531,
+02/10/2025 07:24 PM,Alex Kim,Refund,$37.50,ORD-58120,
+02/10/2025 05:59 PM,Alex Kim,Refund,$49.41,ORD-21761,
+02/11/2025 07:10 PM,James Wilson,Void,$31.89,ORD-56233,Cold food
+02/11/2025 04:36 PM,Casey Davis,Refund,$41.87,ORD-54985,Cold food
+02/11/2025 05:38 PM,Sam Patel,Refund,$27.73,ORD-98940,Customer request
+02/11/2025 07:54 PM,Alex Kim,Void,$52.89,ORD-41802,
+02/11/2025 06:30 PM,Alex Kim,Void,$20.80,ORD-57566,
+02/12/2025 05:43 PM,James Wilson,Void,$25.25,ORD-88199,Wrong item
+02/12/2025 06:25 PM,Riley Clark,Comp,$39.20,ORD-72204,Duplicate
+02/12/2025 05:51 PM,Alex Kim,Refund,$22.57,ORD-63395,
+02/12/2025 08:38 PM,Alex Kim,Refund,$48.06,ORD-66026,
+02/12/2025 07:10 PM,Alex Kim,Void,$29.03,ORD-79102,
+02/13/2025 12:10 PM,James Wilson,Refund,$9.76,ORD-19733,Duplicate
+02/13/2025 12:21 PM,Jordan Brown,Refund,$30.07,ORD-44167,
+02/13/2025 01:42 PM,Maria Garcia,Comp,$37.91,ORD-44323,Cold food
+02/13/2025 06:44 PM,Alex Kim,Refund,$47.12,ORD-76916,
+02/13/2025 06:30 PM,Alex Kim,Void,$53.32,ORD-39502,
+02/14/2025 08:51 PM,Alex Kim,Comp,$32.15,ORD-80392,Customer request
+02/14/2025 03:47 PM,Maria Garcia,Comp,$29.11,ORD-20526,
+02/14/2025 06:18 PM,Alex Kim,Refund,$44.83,ORD-11507,
+02/14/2025 08:18 PM,Alex Kim,Refund,$18.47,ORD-31352,
+02/14/2025 07:43 PM,Alex Kim,Refund,$16.33,ORD-21504,
+02/15/2025 01:04 PM,Alex Kim,Refund,$15.20,ORD-74124,Customer request
+02/15/2025 05:27 PM,Maria Garcia,Void,$17.91,ORD-78496,
+02/15/2025 01:52 PM,James Wilson,Void,$35.01,ORD-78423,Wrong item
+02/15/2025 06:08 PM,Alex Kim,Refund,$35.90,ORD-38897,
+02/15/2025 06:14 PM,Alex Kim,Refund,$16.38,ORD-20296,
+02/15/2025 09:19 PM,Alex Kim,Void,$16.09,ORD-80916,
+02/16/2025 12:57 PM,Taylor Jones,Void,$19.14,ORD-96453,Customer request
+02/16/2025 03:37 PM,Maria Garcia,Refund,$20.86,ORD-12945,Customer request
+02/16/2025 06:25 PM,Taylor Jones,Refund,$14.01,ORD-47148,Wrong item
+02/16/2025 08:52 PM,Alex Kim,Void,$23.99,ORD-65956,
+02/16/2025 09:16 PM,Alex Kim,Void,$22.04,ORD-61231,
+02/16/2025 09:26 PM,Alex Kim,Void,$38.77,ORD-17201,
+02/17/2025 11:16 AM,Riley Clark,Void,$20.26,ORD-39517,Duplicate
+02/17/2025 06:47 PM,Morgan Lee,Comp,$37.12,ORD-56765,Customer request
+02/17/2025 10:37 PM,Alex Kim,Void,$43.32,ORD-85883,
+02/17/2025 09:47 PM,Alex Kim,Void,$22.06,ORD-61423,
+02/17/2025 06:46 PM,Alex Kim,Refund,$33.47,ORD-55133,
+02/18/2025 07:57 PM,Quinn Martin,Refund,$11.11,ORD-57862,Wrong item
+02/18/2025 09:57 PM,Casey Davis,Void,$27.80,ORD-21673,Wrong item
+02/18/2025 07:12 PM,Alex Kim,Refund,$37.76,ORD-77243,
+02/18/2025 10:43 PM,Alex Kim,Refund,$41.10,ORD-69387,
+02/19/2025 05:19 PM,Morgan Lee,Comp,$18.37,ORD-94354,Cold food
+02/19/2025 06:40 PM,Taylor Jones,Refund,$40.37,ORD-36813,Customer request
+02/19/2025 01:49 PM,Sam Patel,Refund,$10.03,ORD-66153,Customer request
+02/19/2025 09:14 PM,Alex Kim,Refund,$23.62,ORD-85218,
+02/19/2025 08:23 PM,Alex Kim,Refund,$22.58,ORD-10950,
+02/19/2025 06:48 PM,Alex Kim,Void,$30.97,ORD-27910,
+02/19/2025 05:00 PM,Alex Kim,Void,$43.49,ORD-57578,
+02/20/2025 09:45 PM,Jordan Brown,Comp,$14.05,ORD-82705,Cold food
+02/20/2025 10:56 PM,Alex Kim,Void,$20.53,ORD-94587,
+02/20/2025 05:39 PM,Alex Kim,Void,$46.42,ORD-25081,
+02/20/2025 05:31 PM,Alex Kim,Void,$48.87,ORD-12145,
+02/21/2025 05:56 PM,Quinn Martin,Comp,$11.41,ORD-14929,Cold food
+02/21/2025 10:04 PM,Alex Kim,Void,$52.33,ORD-59338,
+02/21/2025 07:38 PM,Alex Kim,Refund,$18.92,ORD-30083,
+02/22/2025 05:28 PM,Sam Patel,Void,$22.25,ORD-10207,Customer request
+02/22/2025 08:02 PM,Alex Kim,Void,$36.28,ORD-37311,Customer request
+02/22/2025 12:14 PM,Taylor Jones,Refund,$33.42,ORD-25244,Duplicate
+02/22/2025 07:02 PM,Alex Kim,Refund,$26.82,ORD-72564,
+02/22/2025 06:39 PM,Alex Kim,Refund,$45.48,ORD-60361,
+02/23/2025 03:41 PM,Taylor Jones,Refund,$16.42,ORD-85626,Cold food
+02/23/2025 06:00 PM,Sam Patel,Void,$37.04,ORD-19226,Customer request
+02/23/2025 10:59 PM,Alex Kim,Void,$19.75,ORD-64191,
+02/23/2025 05:53 PM,Alex Kim,Refund,$45.36,ORD-23639,
+02/23/2025 06:07 PM,Alex Kim,Refund,$45.89,ORD-80443,
+02/24/2025 07:22 PM,Sam Patel,Refund,$40.92,ORD-77991,Cold food
+02/24/2025 06:26 PM,Taylor Jones,Refund,$39.33,ORD-56901,Cold food
+02/24/2025 07:09 PM,Casey Davis,Void,$34.50,ORD-48608,Cold food
+02/24/2025 05:45 PM,Alex Kim,Refund,$18.10,ORD-24618,
+02/24/2025 08:48 PM,Alex Kim,Void,$18.56,ORD-92716,
+02/24/2025 10:15 PM,Alex Kim,Void,$51.14,ORD-78770,
+02/24/2025 09:36 PM,Alex Kim,Void,$41.01,ORD-81697,
+02/25/2025 03:36 PM,Quinn Martin,Comp,$43.47,ORD-43638,Customer request
+02/25/2025 10:31 PM,Alex Kim,Void,$20.31,ORD-41431,
+02/25/2025 07:14 PM,Alex Kim,Void,$22.29,ORD-44671,
+02/25/2025 06:45 PM,Alex Kim,Refund,$20.70,ORD-24365,
+02/25/2025 07:43 PM,Alex Kim,Refund,$28.15,ORD-54425,
+02/26/2025 07:56 PM,Alex Kim,Void,$24.43,ORD-76628,Wrong item
+02/26/2025 06:59 PM,Alex Kim,Refund,$16.01,ORD-80781,
+02/26/2025 09:39 PM,Alex Kim,Void,$54.00,ORD-18277,
+02/26/2025 09:12 PM,Alex Kim,Refund,$48.60,ORD-11876,
+02/27/2025 08:54 PM,Casey Davis,Refund,$25.11,ORD-58711,Duplicate
+02/27/2025 09:49 PM,Morgan Lee,Refund,$19.40,ORD-21280,
+02/27/2025 05:04 PM,Alex Kim,Void,$36.48,ORD-58518,
+02/27/2025 07:36 PM,Alex Kim,Refund,$20.03,ORD-92224,
+02/27/2025 08:50 PM,Alex Kim,Refund,$26.89,ORD-50560,
+02/28/2025 05:17 PM,James Wilson,Comp,$29.41,ORD-80877,Customer request
+02/28/2025 11:01 AM,Sam Patel,Comp,$14.26,ORD-35179,Wrong item
+02/28/2025 06:06 PM,Jordan Brown,Void,$28.30,ORD-46611,
+02/28/2025 07:07 PM,Alex Kim,Refund,$15.32,ORD-42657,
+02/28/2025 08:37 PM,Alex Kim,Refund,$30.63,ORD-62325,
+02/28/2025 09:37 PM,Alex Kim,Refund,$42.41,ORD-53106,
+03/01/2025 03:25 PM,Jordan Brown,Void,$29.74,ORD-39480,Cold food
+03/01/2025 07:14 PM,Alex Kim,Refund,$22.35,ORD-72375,
+03/01/2025 05:24 PM,Alex Kim,Refund,$42.77,ORD-33796,
+03/01/2025 08:03 PM,Alex Kim,Void,$48.17,ORD-64773,
+03/02/2025 12:38 PM,Taylor Jones,Refund,$13.80,ORD-16217,Wrong item
+03/02/2025 05:29 PM,Alex Kim,Refund,$20.29,ORD-18750,
+03/02/2025 06:57 PM,Alex Kim,Void,$21.36,ORD-25981,
+03/02/2025 08:30 PM,Alex Kim,Refund,$43.38,ORD-88478,
+03/02/2025 08:58 PM,Alex Kim,Refund,$29.72,ORD-35874,
+03/03/2025 10:15 PM,Alex Kim,Void,$33.26,ORD-95217,Customer request
+03/03/2025 06:03 PM,Alex Kim,Refund,$54.23,ORD-42183,
+03/03/2025 10:03 PM,Alex Kim,Void,$28.28,ORD-85593,
+03/03/2025 08:18 PM,Alex Kim,Void,$16.90,ORD-74148,
+03/03/2025 10:44 PM,Alex Kim,Void,$16.85,ORD-91583,
+03/04/2025 08:29 PM,Quinn Martin,Refund,$41.82,ORD-95655,Cold food
+03/04/2025 03:28 PM,Jordan Brown,Refund,$32.33,ORD-63669,
+03/04/2025 05:42 PM,Alex Kim,Void,$29.68,ORD-13518,Cold food
+03/04/2025 09:55 PM,Alex Kim,Void,$29.92,ORD-65730,
+03/04/2025 06:07 PM,Alex Kim,Void,$51.63,ORD-34539,
+03/04/2025 10:15 PM,Alex Kim,Refund,$39.55,ORD-26933,
+03/04/2025 09:16 PM,Alex Kim,Refund,$47.54,ORD-92675,
+03/05/2025 03:39 PM,James Wilson,Comp,$10.53,ORD-81470,Customer request
+03/05/2025 10:37 PM,Alex Kim,Void,$27.83,ORD-32333,
+03/05/2025 05:33 PM,Alex Kim,Refund,$24.15,ORD-62254,
+03/06/2025 07:18 PM,Jordan Brown,Comp,$30.87,ORD-84420,Duplicate
+03/06/2025 06:24 PM,Riley Clark,Void,$26.82,ORD-43680,Cold food
+03/06/2025 05:37 PM,Alex Kim,Void,$30.92,ORD-18252,
+03/06/2025 06:44 PM,Alex Kim,Refund,$19.78,ORD-83327,
+03/07/2025 01:36 PM,Casey Davis,Comp,$44.41,ORD-40226,Duplicate
+03/07/2025 08:10 PM,Alex Kim,Void,$49.22,ORD-60117,
+03/07/2025 06:58 PM,Alex Kim,Refund,$39.77,ORD-75970,
+03/07/2025 09:40 PM,Alex Kim,Void,$53.30,ORD-67129,
+03/07/2025 09:07 PM,Alex Kim,Void,$23.69,ORD-89144,
+03/08/2025 02:33 PM,Riley Clark,Refund,$35.15,ORD-69547,Wrong item
+03/08/2025 10:37 PM,James Wilson,Comp,$15.28,ORD-61023,Cold food
+03/08/2025 05:10 PM,Jordan Brown,Void,$9.48,ORD-82152,Wrong item
+03/08/2025 06:29 PM,Alex Kim,Refund,$17.77,ORD-58017,
+03/08/2025 10:45 PM,Alex Kim,Refund,$34.34,ORD-42954,
+03/09/2025 04:16 PM,Jordan Brown,Void,$23.94,ORD-49038,Customer request
+03/09/2025 02:10 PM,Maria Garcia,Refund,$9.15,ORD-81934,Duplicate
+03/09/2025 07:14 PM,Alex Kim,Void,$25.29,ORD-51813,
+03/09/2025 05:18 PM,Alex Kim,Refund,$41.88,ORD-42186,
+03/09/2025 09:17 PM,Alex Kim,Refund,$18.38,ORD-72479,
+03/09/2025 10:33 PM,Alex Kim,Void,$21.69,ORD-40149,
+03/10/2025 11:08 AM,Taylor Jones,Comp,$38.55,ORD-48000,Cold food
+03/10/2025 03:41 PM,Quinn Martin,Void,$42.62,ORD-47780,
+03/10/2025 08:26 PM,Alex Kim,Refund,$29.78,ORD-85309,
+03/10/2025 05:41 PM,Alex Kim,Void,$16.80,ORD-30204,
+03/10/2025 09:24 PM,Alex Kim,Refund,$38.21,ORD-64243,
+03/11/2025 10:46 PM,Taylor Jones,Void,$8.45,ORD-76557,Duplicate
+03/11/2025 10:28 PM,Alex Kim,Void,$17.49,ORD-22051,
+03/11/2025 05:26 PM,Alex Kim,Void,$34.43,ORD-53449,
+03/11/2025 10:49 PM,Alex Kim,Void,$44.11,ORD-67176,
+03/12/2025 05:31 PM,Maria Garcia,Comp,$32.92,ORD-74201,Wrong item
+03/12/2025 03:03 PM,James Wilson,Void,$22.86,ORD-95133,Wrong item
+03/12/2025 10:13 PM,Alex Kim,Void,$41.10,ORD-56369,
+03/12/2025 10:32 PM,Alex Kim,Refund,$26.34,ORD-81024,
+03/12/2025 06:35 PM,Alex Kim,Void,$50.84,ORD-66526,
+03/13/2025 09:23 PM,Jordan Brown,Void,$27.84,ORD-79693,Wrong item
+03/13/2025 03:19 PM,James Wilson,Comp,$22.39,ORD-37367,Duplicate
+03/13/2025 04:19 PM,Jordan Brown,Void,$15.32,ORD-56232,Wrong item
+03/13/2025 10:27 PM,Alex Kim,Refund,$50.02,ORD-61244,
+03/13/2025 05:07 PM,Alex Kim,Void,$27.30,ORD-72662,
+03/13/2025 07:15 PM,Alex Kim,Refund,$49.69,ORD-95801,
+03/13/2025 05:54 PM,Alex Kim,Void,$38.40,ORD-34245,
+03/14/2025 01:07 PM,Casey Davis,Refund,$40.27,ORD-84976,Wrong item
+03/14/2025 06:05 PM,Alex Kim,Refund,$30.14,ORD-79928,
+03/14/2025 10:08 PM,Alex Kim,Refund,$36.62,ORD-55608,
+03/15/2025 12:57 PM,James Wilson,Refund,$41.00,ORD-85979,Customer request
+03/15/2025 06:31 PM,Alex Kim,Void,$32.22,ORD-16242,
+03/15/2025 06:42 PM,Alex Kim,Void,$35.46,ORD-91085,
+03/16/2025 09:47 PM,Taylor Jones,Refund,$38.44,ORD-47650,Cold food
+03/16/2025 08:18 PM,Alex Kim,Void,$52.14,ORD-16638,
+03/16/2025 05:08 PM,Alex Kim,Refund,$51.62,ORD-22146,
+03/17/2025 06:12 PM,Alex Kim,Void,$15.51,ORD-76540,Duplicate
+03/17/2025 07:12 PM,Alex Kim,Refund,$24.66,ORD-80118,
+03/17/2025 09:14 PM,Alex Kim,Void,$26.76,ORD-94464,
+03/18/2025 08:02 PM,Jordan Brown,Comp,$38.53,ORD-25888,
+03/18/2025 02:44 PM,Casey Davis,Void,$39.59,ORD-86100,Customer request
+03/18/2025 08:15 PM,Alex Kim,Void,$51.39,ORD-53498,
+03/18/2025 10:47 PM,Alex Kim,Void,$37.55,ORD-52944,
+03/19/2025 02:55 PM,Jordan Brown,Comp,$10.70,ORD-71789,Wrong item
+03/19/2025 02:51 PM,Alex Kim,Refund,$43.20,ORD-87908,Cold food
+03/19/2025 06:25 PM,Alex Kim,Void,$44.19,ORD-71652,
+03/19/2025 07:53 PM,Alex Kim,Void,$33.28,ORD-73977,
+03/19/2025 09:38 PM,Alex Kim,Refund,$54.14,ORD-46363,
+03/20/2025 12:27 PM,Sam Patel,Comp,$11.88,ORD-58368,Duplicate
+03/20/2025 10:25 PM,Alex Kim,Refund,$22.14,ORD-26608,
+03/20/2025 08:37 PM,Alex Kim,Void,$29.40,ORD-69405,
+03/20/2025 08:19 PM,Alex Kim,Void,$31.25,ORD-28782,
+03/21/2025 10:25 PM,Casey Davis,Refund,$8.97,ORD-59446,Cold food
+03/21/2025 01:39 PM,Maria Garcia,Comp,$9.54,ORD-91767,
+03/21/2025 07:26 PM,Alex Kim,Refund,$24.40,ORD-49203,
+03/21/2025 09:33 PM,Alex Kim,Void,$49.65,ORD-34718,
+03/21/2025 07:13 PM,Alex Kim,Void,$29.98,ORD-59313,
+03/22/2025 04:51 PM,Maria Garcia,Comp,$33.17,ORD-78408,Customer request
+03/22/2025 01:48 PM,Riley Clark,Refund,$29.20,ORD-87423,
+03/22/2025 08:36 PM,Quinn Martin,Void,$38.36,ORD-34860,Duplicate
+03/22/2025 07:09 PM,Alex Kim,Void,$36.16,ORD-67959,
+03/22/2025 07:45 PM,Alex Kim,Refund,$26.25,ORD-11509,
+03/22/2025 07:27 PM,Alex Kim,Void,$53.68,ORD-17980,
+03/23/2025 10:21 PM,Sam Patel,Comp,$27.92,ORD-89839,Duplicate
+03/23/2025 12:49 PM,Taylor Jones,Comp,$33.64,ORD-12123,Customer request
+03/23/2025 03:08 PM,Riley Clark,Refund,$25.59,ORD-69161,Duplicate
+03/23/2025 07:15 PM,Alex Kim,Refund,$23.95,ORD-64576,
+03/23/2025 08:08 PM,Alex Kim,Refund,$36.65,ORD-50611,
+03/23/2025 10:12 PM,Alex Kim,Void,$29.46,ORD-19146,
+03/24/2025 07:11 PM,Casey Davis,Comp,$25.11,ORD-30651,
+03/24/2025 07:40 PM,Riley Clark,Refund,$27.13,ORD-52817,Customer request
+03/24/2025 08:39 PM,Alex Kim,Void,$22.11,ORD-32128,
+03/24/2025 08:16 PM,Alex Kim,Void,$17.87,ORD-82110,
+03/24/2025 07:34 PM,Alex Kim,Refund,$42.74,ORD-96962,
+03/24/2025 05:28 PM,Alex Kim,Refund,$28.07,ORD-83293,
+03/25/2025 02:50 PM,Sam Patel,Comp,$43.56,ORD-47528,Cold food
+03/25/2025 05:02 PM,Alex Kim,Void,$49.66,ORD-98154,
+03/25/2025 10:31 PM,Alex Kim,Void,$23.30,ORD-58553,
+03/25/2025 06:12 PM,Alex Kim,Refund,$31.61,ORD-64083,
+03/25/2025 09:14 PM,Alex Kim,Refund,$35.99,ORD-75562,
+03/26/2025 12:33 PM,Taylor Jones,Refund,$38.49,ORD-88032,Customer request
+03/26/2025 05:07 PM,Alex Kim,Void,$25.63,ORD-47793,
+03/26/2025 09:44 PM,Alex Kim,Refund,$49.12,ORD-49006,
+03/26/2025 09:50 PM,Alex Kim,Void,$46.79,ORD-12190,
+03/27/2025 02:47 PM,Casey Davis,Comp,$34.16,ORD-69547,
+03/27/2025 04:35 PM,Alex Kim,Refund,$35.10,ORD-67097,Duplicate
+03/27/2025 03:07 PM,Casey Davis,Void,$24.22,ORD-51481,Customer request
+03/27/2025 06:17 PM,Alex Kim,Refund,$27.96,ORD-93251,
+03/27/2025 07:09 PM,Alex Kim,Refund,$15.22,ORD-80208,
+03/27/2025 07:28 PM,Alex Kim,Void,$44.84,ORD-79327,
+03/27/2025 05:45 PM,Alex Kim,Void,$29.35,ORD-10768,
+03/28/2025 12:49 PM,Casey Davis,Void,$12.23,ORD-28039,Wrong item
+03/28/2025 10:40 PM,Sam Patel,Refund,$21.92,ORD-40725,
+03/28/2025 12:02 PM,James Wilson,Comp,$20.15,ORD-15053,Duplicate
+03/28/2025 09:25 PM,Alex Kim,Refund,$52.20,ORD-13154,
+03/28/2025 07:35 PM,Alex Kim,Void,$33.42,ORD-70309,
+03/29/2025 09:29 PM,Taylor Jones,Void,$35.12,ORD-19360,Customer request
+03/29/2025 04:49 PM,Sam Patel,Void,$31.21,ORD-73361,
+03/29/2025 01:00 PM,Morgan Lee,Refund,$11.07,ORD-25780,
+03/29/2025 08:58 PM,Alex Kim,Refund,$48.16,ORD-91815,
+03/29/2025 10:08 PM,Alex Kim,Refund,$36.45,ORD-57367,
+03/30/2025 11:16 AM,James Wilson,Void,$15.24,ORD-80007,
+03/30/2025 08:10 PM,Taylor Jones,Refund,$17.31,ORD-34785,Duplicate
+03/30/2025 05:05 PM,Jordan Brown,Refund,$16.81,ORD-33514,Cold food
+03/30/2025 09:46 PM,Alex Kim,Void,$39.67,ORD-66305,
+03/30/2025 08:03 PM,Alex Kim,Void,$52.82,ORD-63371,
+03/31/2025 10:55 PM,Morgan Lee,Void,$34.32,ORD-45546,Wrong item
+03/31/2025 06:26 PM,Alex Kim,Void,$19.32,ORD-43257,
+03/31/2025 07:23 PM,Alex Kim,Void,$25.38,ORD-39004,
+03/31/2025 10:57 PM,Alex Kim,Refund,$38.10,ORD-45849,
+03/31/2025 10:53 PM,Alex Kim,Refund,$24.80,ORD-83600,

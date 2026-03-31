@@ -60,19 +60,20 @@ MENU_PAYLOADS = [
 
 
 class TestBulk:
-    async def test_bulk_employees(self, client, location):
+    async def test_bulk_employees(self, client, auth_headers, location):
         """POST /employees/bulk with 2 employees returns created: 2."""
         loc_id = str(location.id)
         resp = await client.post(
             f"/api/v1/locations/{loc_id}/employees/bulk",
             json=EMPLOYEE_PAYLOADS,
+            headers=auth_headers,
         )
         assert resp.status_code == 200
         data = resp.json()
         assert data["created"] == 2
         assert data["updated"] == 0
 
-    async def test_bulk_employees_idempotent(self, client, location):
+    async def test_bulk_employees_idempotent(self, client, auth_headers, location):
         """POST same employee data twice — second call updates, not creates."""
         loc_id = str(location.id)
 
@@ -80,6 +81,7 @@ class TestBulk:
         resp1 = await client.post(
             f"/api/v1/locations/{loc_id}/employees/bulk",
             json=EMPLOYEE_PAYLOADS,
+            headers=auth_headers,
         )
         assert resp1.json()["created"] == 2
 
@@ -87,23 +89,25 @@ class TestBulk:
         resp2 = await client.post(
             f"/api/v1/locations/{loc_id}/employees/bulk",
             json=EMPLOYEE_PAYLOADS,
+            headers=auth_headers,
         )
         data2 = resp2.json()
         assert data2["updated"] == 2
         assert data2["created"] == 0
 
-    async def test_bulk_menu_items(self, client, location):
+    async def test_bulk_menu_items(self, client, auth_headers, location):
         """POST /menu-items/bulk creates menu items."""
         loc_id = str(location.id)
         resp = await client.post(
             f"/api/v1/locations/{loc_id}/menu-items/bulk",
             json=MENU_PAYLOADS,
+            headers=auth_headers,
         )
         assert resp.status_code == 200
         data = resp.json()
         assert data["created"] == 2
 
-    async def test_bulk_orders_with_items(self, client, location):
+    async def test_bulk_orders_with_items(self, client, auth_headers, location):
         """POST /orders/bulk with nested order items creates both."""
         loc_id = str(location.id)
 
@@ -111,10 +115,12 @@ class TestBulk:
         await client.post(
             f"/api/v1/locations/{loc_id}/employees/bulk",
             json=EMPLOYEE_PAYLOADS,
+            headers=auth_headers,
         )
         await client.post(
             f"/api/v1/locations/{loc_id}/menu-items/bulk",
             json=MENU_PAYLOADS,
+            headers=auth_headers,
         )
 
         order_payloads = [
@@ -138,13 +144,14 @@ class TestBulk:
         resp = await client.post(
             f"/api/v1/locations/{loc_id}/orders/bulk",
             json=order_payloads,
+            headers=auth_headers,
         )
         assert resp.status_code == 200
         data = resp.json()
         assert data["orders"]["created"] == 1
         assert data["order_items"]["created"] == 2
 
-    async def test_bulk_shifts(self, client, location):
+    async def test_bulk_shifts(self, client, auth_headers, location):
         """POST /shifts/bulk creates shifts."""
         loc_id = str(location.id)
 
@@ -152,6 +159,7 @@ class TestBulk:
         await client.post(
             f"/api/v1/locations/{loc_id}/employees/bulk",
             json=EMPLOYEE_PAYLOADS,
+            headers=auth_headers,
         )
 
         shift_payloads = [
@@ -176,13 +184,14 @@ class TestBulk:
         resp = await client.post(
             f"/api/v1/locations/{loc_id}/shifts/bulk",
             json=shift_payloads,
+            headers=auth_headers,
         )
         assert resp.status_code == 200
         data = resp.json()
         assert data["created"] == 2
 
     async def test_bulk_with_recompute(
-        self, client, location, seed_employees, seed_menu, seed_orders, seed_shifts
+        self, client, auth_headers, location, seed_employees, seed_menu, seed_orders, seed_shifts
     ):
         """POST /employees/bulk?recompute=true includes dashboard in response.
 
@@ -199,23 +208,26 @@ class TestBulk:
             f"/api/v1/locations/{loc_id}/employees/bulk",
             json=EMPLOYEE_PAYLOADS,
             params={"recompute": "true"},
+            headers=auth_headers,
         )
         assert resp.status_code == 200
         data = resp.json()
         assert "dashboard" in data
         assert "status" in data["dashboard"]
 
-    async def test_bulk_orders_dedup(self, client, location):
+    async def test_bulk_orders_dedup(self, client, auth_headers, location):
         """POST orders twice with same external IDs — same count in DB, second call updates."""
         loc_id = str(location.id)
 
         await client.post(
             f"/api/v1/locations/{loc_id}/employees/bulk",
             json=EMPLOYEE_PAYLOADS,
+            headers=auth_headers,
         )
         await client.post(
             f"/api/v1/locations/{loc_id}/menu-items/bulk",
             json=MENU_PAYLOADS,
+            headers=auth_headers,
         )
 
         order_payloads = [
@@ -241,6 +253,7 @@ class TestBulk:
         resp1 = await client.post(
             f"/api/v1/locations/{loc_id}/orders/bulk",
             json=order_payloads,
+            headers=auth_headers,
         )
         assert resp1.json()["orders"]["created"] == 2
 
@@ -248,6 +261,7 @@ class TestBulk:
         resp2 = await client.post(
             f"/api/v1/locations/{loc_id}/orders/bulk",
             json=order_payloads,
+            headers=auth_headers,
         )
         assert resp2.json()["orders"]["updated"] == 2
         assert resp2.json()["orders"]["created"] == 0

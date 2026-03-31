@@ -1,4 +1,4 @@
-# Restaurant Chops — Restaurant Operations Backend
+# EightySix — Restaurant Operations Backend
 
 Production-shaped backend for restaurant operations intelligence. Real rules engine, real database, real API — only the POS/payroll source adapters are stubbed.
 

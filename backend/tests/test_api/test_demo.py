@@ -38,7 +38,7 @@ async def _reset_via_delete(db):
 
 
 class TestDemo:
-    async def test_demo_lifecycle(self, client, db):
+    async def test_demo_lifecycle(self, client, db, admin_headers, auth_headers):
         """Full happy-path: reset -> load scenario -> verify loaded."""
         # Reset using SQLite-compatible DELETE
         await _reset_via_delete(db)
@@ -46,7 +46,7 @@ class TestDemo:
         # Load scenario
         load_resp = await client.post("/api/v1/demo/load-scenario", json={
             "scenario": "normal_day",
-        })
+        }, headers=admin_headers)
         assert load_resp.status_code == 200
         load_data = load_resp.json()
         assert load_data["status"] == "loaded"
@@ -56,8 +56,8 @@ class TestDemo:
 
         location_id = load_data["location_id"]
 
-        # Verify the location was created
-        loc_resp = await client.get("/api/v1/locations")
+        # Verify the location was created (locations requires auth_headers)
+        loc_resp = await client.get("/api/v1/locations", headers=auth_headers)
         assert loc_resp.status_code == 200
         locations = loc_resp.json()
         assert any(loc["id"] == location_id for loc in locations)
@@ -68,7 +68,7 @@ class TestDemo:
             assert key in ingestion
             assert ingestion[key]["created"] > 0
 
-    async def test_load_invalid_scenario(self, client):
+    async def test_load_invalid_scenario(self, client, admin_headers):
         """POST /demo/load-scenario with a bad scenario name raises ValueError.
 
         The seed loader raises ValueError for unknown scenarios. Through httpx's
@@ -78,30 +78,30 @@ class TestDemo:
         with pytest.raises(ValueError, match="Unknown scenario"):
             await client.post("/api/v1/demo/load-scenario", json={
                 "scenario": "nonexistent_scenario",
-            })
+            }, headers=admin_headers)
 
-    async def test_reset_clears_data(self, client, db):
+    async def test_reset_clears_data(self, client, db, admin_headers, auth_headers):
         """Load a scenario, reset, then verify locations list is empty."""
         # Load a scenario
         load_resp = await client.post("/api/v1/demo/load-scenario", json={
             "scenario": "normal_day",
-        })
+        }, headers=admin_headers)
         assert load_resp.status_code == 200
 
-        # Verify locations exist
-        locations_resp = await client.get("/api/v1/locations")
+        # Verify locations exist (locations requires auth_headers)
+        locations_resp = await client.get("/api/v1/locations", headers=auth_headers)
         assert len(locations_resp.json()) >= 1
 
         # Reset using SQLite-compatible DELETE
         await _reset_via_delete(db)
 
         # Verify locations are now empty
-        locations_resp = await client.get("/api/v1/locations")
+        locations_resp = await client.get("/api/v1/locations", headers=auth_headers)
         assert resp_is_empty_list(locations_resp)
 
-    async def test_get_scenarios(self, client):
+    async def test_get_scenarios(self, client, admin_headers):
         """GET /demo/scenarios returns the list of 8 valid scenarios."""
-        resp = await client.get("/api/v1/demo/scenarios")
+        resp = await client.get("/api/v1/demo/scenarios", headers=admin_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert "scenarios" in data
@@ -112,12 +112,12 @@ class TestDemo:
         assert "dinner_rush" in scenarios
         assert "understaffed" in scenarios
 
-    async def test_load_scenario_returns_ingestion_summary(self, client, db):
+    async def test_load_scenario_returns_ingestion_summary(self, client, db, admin_headers):
         """The load-scenario response includes ingestion summary with counts."""
         await _reset_via_delete(db)
         resp = await client.post("/api/v1/demo/load-scenario", json={
             "scenario": "dinner_rush",
-        })
+        }, headers=admin_headers)
         assert resp.status_code == 200
         data = resp.json()
         assert "ingestion" in data
@@ -127,9 +127,9 @@ class TestDemo:
             assert key in ingestion
             assert "created" in ingestion[key]
 
-    async def test_recompute_requires_location_id(self, client):
+    async def test_recompute_requires_location_id(self, client, admin_headers):
         """POST /demo/recompute without location_id returns 422."""
-        resp = await client.post("/api/v1/demo/recompute", json={})
+        resp = await client.post("/api/v1/demo/recompute", json={}, headers=admin_headers)
         assert resp.status_code == 422
 
 

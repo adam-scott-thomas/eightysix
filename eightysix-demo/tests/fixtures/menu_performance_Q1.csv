@@ -1,0 +1,16 @@
+Item Name,Category,Qty Sold,Net Sales,Food Cost %
+Classic Burger,Entrees,2840,"$39,760.00",32%
+Grilled Chicken Sandwich,Entrees,2100,"$25,200.00",28%
+Caesar Salad,Entrees,1560,"$14,040.00",22%
+Ribeye Steak,Entrees,680,"$23,800.00",42%
+Fish & Chips,Entrees,1200,"$16,800.00",35%
+Pasta Primavera,Entrees,890,"$11,570.00",26%
+French Fries,Sides,4200,"$16,800.00",12%
+Cup of Soup,Sides,1800,"$9,000.00",18%
+Wings Basket,Appetizers,1650,"$18,150.00",33%
+Cheesecake Slice,Desserts,920,"$7,360.00",20%
+Craft Beer,Beverages,3100,"$21,700.00",15%
+House Wine,Beverages,1400,"$14,000.00",18%
+Soft Drinks,Beverages,5200,"$15,600.00",8%
+Loaded Nachos,Appetizers,1100,"$13,200.00",30%
+Side Salad,Sides,2400,"$12,000.00",15%

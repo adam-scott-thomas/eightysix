@@ -1,5 +1,6 @@
-import { RefreshCw, ChevronDown, Menu } from 'lucide-react';
+import { RefreshCw, ChevronDown, Menu, LogOut, User } from 'lucide-react';
 import type { AppMode, Location } from '../../types/api';
+import type { AuthUser } from '../../hooks/useStore';
 
 interface HeaderProps {
   mode: AppMode;
@@ -11,6 +12,8 @@ interface HeaderProps {
   snapshotAt: string | null;
   loading: boolean;
   onMenuToggle: () => void;
+  user: AuthUser | null;
+  onLogout: () => void;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -39,6 +42,8 @@ export function Header({
   snapshotAt,
   loading,
   onMenuToggle,
+  user,
+  onLogout,
 }: HeaderProps) {
   return (
     <header className="flex items-center justify-between gap-2 min-h-14 px-3 sm:px-4 lg:px-6 py-2 bg-white border-b border-gray-200 shrink-0">
@@ -105,6 +110,28 @@ export function Header({
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
           <span className="hidden sm:inline">Recompute</span>
         </button>
+
+        {/* User menu */}
+        {user && (
+          <div className="flex items-center gap-2 pl-2 sm:pl-3 border-l border-gray-200">
+            <div className="hidden sm:flex items-center gap-1.5">
+              <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
+                <User className="w-3.5 h-3.5 text-gray-600" />
+              </div>
+              <span className="text-xs font-medium text-gray-700 max-w-[100px] truncate">{user.full_name}</span>
+              {user.role === 'admin' && (
+                <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-purple-100 text-purple-700">admin</span>
+              )}
+            </div>
+            <button
+              onClick={onLogout}
+              title="Sign out"
+              className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors cursor-pointer"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );
