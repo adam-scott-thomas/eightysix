@@ -30,8 +30,8 @@ _HEADER_SIGNALS: dict[ReportType, list[tuple[list[str], float]]] = {
         (["daypart", "meal period", "shift", "hour"], 0.10),
     ],
     ReportType.SALES_BY_HOUR: [
-        (["net sales", "netsales", "sales", "revenue", "amount"], 0.25),
-        (["hour", "time", "time period", "interval"], 0.35),
+        (["net sales", "netsales", "sales", "revenue"], 0.25),
+        (["hour", "time period", "interval"], 0.35),
         (["order count", "orders", "checks", "transactions"], 0.15),
         (["date", "day", "business date"], 0.10),
     ],
@@ -65,9 +65,11 @@ _HEADER_SIGNALS: dict[ReportType, list[tuple[list[str], float]]] = {
         (["refund", "refund amount", "refund amt", "refund $", "void", "void amount",
           "comp", "comp amount", "discount", "adjustment"], 0.35),
         (["employee", "emp", "team member", "staff", "server", "cashier"], 0.20),
-        (["type", "action", "action type", "reason", "refund type", "void reason"], 0.15),
-        (["order", "order id", "order #", "check", "check #", "ticket"], 0.15),
-        (["date", "time", "timestamp", "closed", "check closed"], 0.10),
+        (["type", "action", "action type", "reason", "refund type", "void reason"], 0.20),
+        (["order", "order id", "order #", "check", "check #", "ticket",
+          "check no", "chk", "chk #"], 0.20),
+        (["date", "time", "timestamp", "closed", "check closed"], 0.05),
+        (["manager", "mgr", "approved by", "authorized"], 0.10),
     ],
     ReportType.MENU_MIX: [
         (["item", "item name", "menu item", "product", "description", "item_name"], 0.25),
@@ -170,8 +172,14 @@ def _cooccurrence_boost(col_patterns: dict[str, list[str]]) -> dict[ReportType, 
 
     # employee + currency + no item = could be labor or refunds
     if "employee" in all_patterns and "currency" in all_patterns and "item_name" not in all_patterns:
-        boosts[ReportType.REFUNDS_VOIDS_COMPS] = 0.10
+        boosts[ReportType.REFUNDS_VOIDS_COMPS] = 0.15
         boosts[ReportType.LABOR_SUMMARY] = 0.10
+
+    # employee + datetime + currency + single datetime col = refunds (not punches)
+    if "employee" in all_patterns and "datetime" in all_patterns and "currency" in all_patterns:
+        datetime_count = sum(1 for p in col_patterns.values() if "datetime" in p)
+        if datetime_count == 1:
+            boosts[ReportType.REFUNDS_VOIDS_COMPS] = boosts.get(ReportType.REFUNDS_VOIDS_COMPS, 0) + 0.15
 
     # date + currency + no employee = sales summary
     if "date" in all_patterns and "currency" in all_patterns and "employee" not in all_patterns:
