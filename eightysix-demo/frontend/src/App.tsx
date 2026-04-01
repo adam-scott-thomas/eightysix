@@ -11,37 +11,40 @@ type Page = 'landing' | 'upload' | 'confirm' | 'lead_capture' | 'results';
 function App() {
   const [page, setPage] = useState<Page>('landing');
   const [uploadResult, setUploadResult] = useState<UploadResponse | null>(null);
+  const [sessionId, setSessionId] = useState('');
   const [restaurantName, setRestaurantName] = useState('Restaurant');
   const [report, setReport] = useState<OwnerReport | null>(null);
   const [explanation, setExplanation] = useState('');
-  const [internalReport, setInternalReport] = useState<Record<string, unknown> | null>(null);
 
   const handleUploadComplete = (result: UploadResponse, name: string) => {
     setUploadResult(result);
+    setSessionId(result.session_id);
     setRestaurantName(name);
     if (result.report) {
       setReport(result.report);
-      setExplanation(result.explanation || '');
-      setInternalReport(result.internal || null);
       setPage('lead_capture');
     } else {
       setPage('confirm');
     }
   };
 
-  const handleConfirmComplete = (r: OwnerReport, exp: string, internal: Record<string, unknown>) => {
+  const handleConfirmComplete = (r: OwnerReport, _exp: string, _internal: Record<string, unknown>) => {
     setReport(r);
-    setExplanation(exp);
-    setInternalReport(internal);
     setPage('lead_capture');
+  };
+
+  const handleVerified = (verifiedReport: OwnerReport, exp: string) => {
+    setReport(verifiedReport);
+    setExplanation(exp);
+    setPage('results');
   };
 
   const handleReset = () => {
     setPage('landing');
     setUploadResult(null);
+    setSessionId('');
     setReport(null);
     setExplanation('');
-    setInternalReport(null);
     setRestaurantName('Restaurant');
   };
 
@@ -61,8 +64,9 @@ function App() {
       {page === 'lead_capture' && report && (
         <LeadCapturePage
           report={report}
+          sessionId={sessionId}
           restaurantName={restaurantName}
-          onComplete={() => setPage('results')}
+          onComplete={handleVerified}
           onBack={() => setPage('upload')}
         />
       )}

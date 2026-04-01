@@ -34,6 +34,9 @@ services:
     build: ../eightysix-demo
     ports:
       - "8001:8001"
+    env_file: .env.demo
+    volumes:
+      - demo-leads:/app/leads
     restart: unless-stopped
 
   nginx:
@@ -52,3 +55,4 @@ services:
 
 volumes:
   pgdata:
+  demo-leads:

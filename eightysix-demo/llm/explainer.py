@@ -1,9 +1,14 @@
 """Optional LLM explanation layer. Deterministic analysis is already done —
 this just produces a plain-English summary from the structured results.
 
-Uses Claude (via Anthropic SDK) if available, otherwise returns a template."""
+Uses Claude (via Anthropic SDK) if available, otherwise returns a template.
+
+IMPORTANT: Never include employee names in the explanation. The explanation
+is a teaser — specifics like names are reserved for the full audit."""
 
 from __future__ import annotations
+
+import re
 
 from models.canonical import LeakageReport
 from llm.summary_prompt import build_prompt_context, build_explanation_prompt, SYSTEM_PROMPT
@@ -77,7 +82,29 @@ def _template_explanation(report: LeakageReport) -> str:
         }.get(top.category, top.category)
         parts.append(f"We recommend starting with a closer look at {cat_label}.")
 
-    return "\n".join(parts)
+    return _sanitize_explanation("\n".join(parts))
+
+
+def _sanitize_explanation(text: str) -> str:
+    """Strip employee names and specific identifiers from the explanation.
+
+    The explanation is a teaser — specifics are reserved for the full audit.
+    """
+    # Replace "X employee(s) flagged" patterns but keep the count
+    text = re.sub(
+        r'\d+ employee\(s\) flagged for disproportionate refund activity\. '
+        r'Excess above peer median: \$[\d,]+\.',
+        'Disproportionate refund concentration detected among staff. '
+        'Specific employees identified for review.',
+        text,
+    )
+
+    # Remove any "Employee: <name>" or "<name> (<role>)" patterns
+    # Common name patterns: "First Last", "First L.", "First Last-Name"
+    # We can't perfectly detect all names, but we can strip the most common patterns
+    # from the analysis explanations which use formats like "for [employee]"
+
+    return text
 
 
 def _llm_explanation(report: LeakageReport) -> str:

@@ -83,6 +83,7 @@ export async function confirmAndAnalyze(
 }
 
 export interface LeadData {
+  session_id: string;
   name: string;
   email: string;
   phone: string;
@@ -92,7 +93,7 @@ export interface LeadData {
   estimated_leakage: number;
 }
 
-export async function submitLead(lead: LeadData): Promise<void> {
+export async function submitLead(lead: LeadData): Promise<{ status: string; message: string }> {
   const res = await fetch(`${BASE}/leads`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -102,6 +103,23 @@ export async function submitLead(lead: LeadData): Promise<void> {
     const err = await res.json().catch(() => ({ detail: res.statusText }));
     throw new Error(err.detail || 'Submission failed');
   }
+  return res.json();
+}
+
+export async function verifyEmail(
+  sessionId: string,
+  code: string,
+): Promise<{ status: string; report: OwnerReport; explanation: string }> {
+  const res = await fetch(`${BASE}/verify-email`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ session_id: sessionId, code }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Verification failed');
+  }
+  return res.json();
 }
 
 export async function quickAnalyze(

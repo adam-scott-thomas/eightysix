@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends libpq5 && \
 RUN useradd --create-home --shell /bin/bash appuser
 
 RUN pip install --no-cache-dir \
-    fastapi uvicorn[standard] python-multipart openpyxl chardet
+    fastapi uvicorn[standard] python-multipart openpyxl chardet boto3
 
 WORKDIR /app
 COPY . .

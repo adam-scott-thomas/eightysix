@@ -22,6 +22,7 @@ from intake.confidence_scorer import data_completeness_score
 from models.canonical import SheetClassification, ReportType
 from output.owner_report import to_owner_json, to_internal_json, to_text_summary
 from llm.explainer import generate_explanation
+from app.api.leads import store_report_for_session
 
 router = APIRouter()
 
@@ -140,9 +141,17 @@ async def upload_files(
             restaurant_name=restaurant_name,
         )
         explanation = generate_explanation(report)
-        response["report"] = to_owner_json(report)
-        response["explanation"] = explanation
-        response["internal"] = to_internal_json(report)
+        owner = to_owner_json(report)
+
+        # Store full results for retrieval after email verification
+        store_report_for_session(session_id, {
+            "report": owner,
+            "explanation": explanation,
+            "internal": to_internal_json(report),
+        })
+
+        # Return only the teaser (big number + categories, no explanation)
+        response["report"] = owner
         _cleanup_session(session_id)
 
     return JSONResponse(response)
@@ -182,12 +191,19 @@ async def confirm_and_analyze(
     )
     explanation = generate_explanation(report)
 
-    response = {
-        "session_id": session_id,
-        "report": to_owner_json(report),
+    owner = to_owner_json(report)
+    explanation = generate_explanation(report)
+
+    # Store full results for retrieval after verification
+    store_report_for_session(session_id, {
+        "report": owner,
         "explanation": explanation,
         "internal": to_internal_json(report),
-        "text_summary": to_text_summary(report),
+    })
+
+    response = {
+        "session_id": session_id,
+        "report": owner,
     }
 
     _cleanup_session(session_id)
@@ -199,7 +215,7 @@ async def quick_analyze(
     files: list[UploadFile] = File(...),
     restaurant_name: str = Form("Restaurant"),
 ):
-    """One-shot: upload and analyze without confirmation step."""
+    """One-shot: upload and analyze. Returns teaser only — full results after verification."""
     if not files:
         raise HTTPException(400, "No files uploaded.")
 
@@ -220,14 +236,20 @@ async def quick_analyze(
         if not saved_paths:
             raise HTTPException(400, "No valid files to analyze.")
 
+        session_id = f"ses_{uuid.uuid4().hex[:12]}"
         report = run_pipeline(saved_paths, restaurant_name=restaurant_name)
+        owner = to_owner_json(report)
         explanation = generate_explanation(report)
 
-        return JSONResponse({
-            "report": to_owner_json(report),
+        store_report_for_session(session_id, {
+            "report": owner,
             "explanation": explanation,
             "internal": to_internal_json(report),
-            "text_summary": to_text_summary(report),
+        })
+
+        return JSONResponse({
+            "session_id": session_id,
+            "report": owner,
         })
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
