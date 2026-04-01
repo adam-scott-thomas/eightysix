@@ -135,6 +135,9 @@ async def verify_email(req: VerifyRequest):
     lead_data["email_verified"] = True
     _persist_lead(lead_data)
 
+    # Notify Adam
+    _notify_new_lead(lead_data)
+
     # Return stored report data
     report_data = session.get("report_data")
     if not report_data:
@@ -155,6 +158,60 @@ def store_report_for_session(session_id: str, report_data: dict):
     if session_id not in _verifications:
         _verifications[session_id] = {}
     _verifications[session_id]["report_data"] = report_data
+
+
+NOTIFY_EMAIL = "adam@ghostlogic.tech"
+
+
+def _notify_new_lead(lead_data: dict):
+    """Send Adam an email when a verified lead comes in."""
+    try:
+        ses = boto3.client("ses", region_name="us-east-1")
+        name = lead_data.get("name", "Unknown")
+        email = lead_data.get("email", "")
+        phone = lead_data.get("phone", "")
+        restaurant = lead_data.get("restaurant_name", "")
+        address = lead_data.get("address", "")
+        concerns = ", ".join(lead_data.get("top_concerns", []))
+        leakage = lead_data.get("estimated_leakage", 0)
+
+        ses.send_email(
+            Source="EightySix <noreply@quantumatiq.com>",
+            Destination={"ToAddresses": [NOTIFY_EMAIL]},
+            Message={
+                "Subject": {"Data": f"New EightySix lead: {name} — {restaurant}"},
+                "Body": {
+                    "Html": {
+                        "Data": f"""
+<div style="font-family: -apple-system, sans-serif; max-width: 520px; margin: 0 auto; padding: 24px;">
+    <h2 style="margin: 0 0 16px; color: #111;">New verified lead</h2>
+    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+        <tr><td style="padding: 8px 0; color: #888; width: 120px;">Name</td><td style="padding: 8px 0; font-weight: 600;">{name}</td></tr>
+        <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;"><a href="mailto:{email}">{email}</a></td></tr>
+        <tr><td style="padding: 8px 0; color: #888;">Phone</td><td style="padding: 8px 0;"><a href="tel:{phone}">{phone}</a></td></tr>
+        <tr><td style="padding: 8px 0; color: #888;">Restaurant</td><td style="padding: 8px 0; font-weight: 600;">{restaurant}</td></tr>
+        <tr><td style="padding: 8px 0; color: #888;">Address</td><td style="padding: 8px 0;">{address}</td></tr>
+        <tr><td style="padding: 8px 0; color: #888;">Top concerns</td><td style="padding: 8px 0;">{concerns}</td></tr>
+        <tr style="background: #fffbeb;"><td style="padding: 12px 8px; color: #888;">Est. leakage</td><td style="padding: 12px 8px; font-weight: 900; font-size: 18px; color: #d97706;">${leakage:,.0f}/yr</td></tr>
+    </table>
+    <p style="color: #999; font-size: 12px; margin-top: 16px;">Email verified. Lead is real. Follow up.</p>
+</div>
+"""
+                    },
+                    "Text": {
+                        "Data": (
+                            f"New EightySix lead (verified)\n\n"
+                            f"Name: {name}\nEmail: {email}\nPhone: {phone}\n"
+                            f"Restaurant: {restaurant}\nAddress: {address}\n"
+                            f"Concerns: {concerns}\n"
+                            f"Est. leakage: ${leakage:,.0f}/yr\n"
+                        )
+                    },
+                },
+            },
+        )
+    except Exception as e:
+        print(f"Lead notification failed: {e}")
 
 
 def _persist_lead(lead_data: dict):

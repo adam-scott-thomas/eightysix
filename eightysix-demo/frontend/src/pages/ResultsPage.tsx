@@ -110,13 +110,13 @@ export function ResultsPage({ report, explanation, onReset }: Props) {
         {/* CTAs */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
           <a
-            href="mailto:adam@adamscottthomas.com?subject=EightySix%20Full%20Audit%20Request"
+            href="mailto:adam@ghostlogic.tech?subject=EightySix%20Full%20Audit%20Request"
             className="px-4 py-2.5 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors text-center"
           >
             Request full audit
           </a>
           <a
-            href="mailto:adam@adamscottthomas.com?subject=EightySix%20Walkthrough"
+            href="mailto:adam@ghostlogic.tech?subject=EightySix%20Walkthrough"
             className="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-black rounded-lg text-sm font-bold transition-colors text-center"
           >
             Book walkthrough
