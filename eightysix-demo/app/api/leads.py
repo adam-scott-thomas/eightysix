@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 import json
+import os
 import random
 import string
 from datetime import datetime, timezone
 from pathlib import Path
 
-import boto3
-from botocore.exceptions import ClientError
+import requests
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
@@ -41,21 +41,53 @@ def _generate_code() -> str:
     return "".join(random.choices(string.digits, k=6))
 
 
-SES_FROM = "EightySix <adam@ghostlogic.tech>"
+# ───────────────────────────── email provider ─────────────────────────────
+#
+# Deliberately kept small. _send_email() is the only surface the rest of the
+# module touches; swapping Resend for Brevo/SparkPost/Mailgun is ~15 LOC in
+# one place.
+
+EMAIL_FROM = os.getenv("EMAIL_FROM", "EightySix <noreply@quantumatiq.com>")
+NOTIFY_EMAIL = "adam@ghostlogic.tech"
+
+
+def _send_email(*, to: str, subject: str, html: str, text: str) -> bool:
+    """Send one email. Returns True on success, False on any failure.
+
+    Provider is Resend via HTTP. Key must be in RESEND_API_KEY env var.
+    """
+    api_key = os.getenv("RESEND_API_KEY")
+    if not api_key:
+        print("Email error: RESEND_API_KEY not set")
+        return False
+    try:
+        r = requests.post(
+            "https://api.resend.com/emails",
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "from": EMAIL_FROM,
+                "to": [to],
+                "subject": subject,
+                "html": html,
+                "text": text,
+            },
+            timeout=10,
+        )
+        if r.status_code >= 400:
+            print(f"Resend error {r.status_code}: {r.text}")
+            return False
+        return True
+    except requests.RequestException as e:
+        print(f"Email error: {e}")
+        return False
 
 
 def _send_verification_email(email: str, code: str, restaurant_name: str) -> bool:
-    """Send verification code via AWS SES."""
-    try:
-        ses = boto3.client("ses", region_name="us-east-1")
-        ses.send_email(
-            Source=SES_FROM,
-            Destination={"ToAddresses": [email]},
-            Message={
-                "Subject": {"Data": f"Your EightySix verification code: {code}"},
-                "Body": {
-                    "Html": {
-                        "Data": f"""
+    """Send verification code via Resend."""
+    html = f"""
 <div style="font-family: -apple-system, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px;">
     <div style="background: #f59e0b; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
         <span style="color: white; font-weight: 900; font-size: 20px;">86</span>
@@ -70,20 +102,17 @@ def _send_verification_email(email: str, code: str, restaurant_name: str) -> boo
     <p style="color: #bbb; font-size: 12px;">EightySix by Maelstrom LLC</p>
 </div>
 """
-                    },
-                    "Text": {
-                        "Data": f"Your EightySix verification code is: {code}\n\nEnter this code to see your full leakage breakdown for {restaurant_name}.\n\nThis code expires in 30 minutes."
-                    },
-                },
-            },
-        )
-        return True
-    except ClientError as e:
-        print(f"SES error: {e}")
-        return False
-    except Exception as e:
-        print(f"Email error: {e}")
-        return False
+    text = (
+        f"Your EightySix verification code is: {code}\n\n"
+        f"Enter this code to see your full leakage breakdown for {restaurant_name}.\n\n"
+        f"This code expires in 30 minutes."
+    )
+    return _send_email(
+        to=email,
+        subject=f"Your EightySix verification code: {code}",
+        html=html,
+        text=text,
+    )
 
 
 @router.post("/leads")
@@ -163,29 +192,17 @@ def store_report_for_session(session_id: str, report_data: dict):
     _verifications[session_id]["report_data"] = report_data
 
 
-NOTIFY_EMAIL = "adam@ghostlogic.tech"
-
-
 def _notify_new_lead(lead_data: dict):
-    """Send Adam an email when a verified lead comes in."""
-    try:
-        ses = boto3.client("ses", region_name="us-east-1")
-        name = lead_data.get("name", "Unknown")
-        email = lead_data.get("email", "")
-        phone = lead_data.get("phone", "")
-        restaurant = lead_data.get("restaurant_name", "")
-        address = lead_data.get("address", "")
-        concerns = ", ".join(lead_data.get("top_concerns", []))
-        leakage = lead_data.get("estimated_leakage", 0)
+    """Send Adam an email when a verified lead comes in. Best-effort, never raises."""
+    name = lead_data.get("name", "Unknown")
+    email = lead_data.get("email", "")
+    phone = lead_data.get("phone", "")
+    restaurant = lead_data.get("restaurant_name", "")
+    address = lead_data.get("address", "")
+    concerns = ", ".join(lead_data.get("top_concerns", []))
+    leakage = lead_data.get("estimated_leakage", 0)
 
-        ses.send_email(
-            Source=SES_FROM,
-            Destination={"ToAddresses": [NOTIFY_EMAIL]},
-            Message={
-                "Subject": {"Data": f"New EightySix lead: {name} — {restaurant}"},
-                "Body": {
-                    "Html": {
-                        "Data": f"""
+    html = f"""
 <div style="font-family: -apple-system, sans-serif; max-width: 520px; margin: 0 auto; padding: 24px;">
     <h2 style="margin: 0 0 16px; color: #111;">New verified lead</h2>
     <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
@@ -200,21 +217,19 @@ def _notify_new_lead(lead_data: dict):
     <p style="color: #999; font-size: 12px; margin-top: 16px;">Email verified. Lead is real. Follow up.</p>
 </div>
 """
-                    },
-                    "Text": {
-                        "Data": (
-                            f"New EightySix lead (verified)\n\n"
-                            f"Name: {name}\nEmail: {email}\nPhone: {phone}\n"
-                            f"Restaurant: {restaurant}\nAddress: {address}\n"
-                            f"Concerns: {concerns}\n"
-                            f"Est. leakage: ${leakage:,.0f}/yr\n"
-                        )
-                    },
-                },
-            },
-        )
-    except Exception as e:
-        print(f"Lead notification failed: {e}")
+    text = (
+        f"New EightySix lead (verified)\n\n"
+        f"Name: {name}\nEmail: {email}\nPhone: {phone}\n"
+        f"Restaurant: {restaurant}\nAddress: {address}\n"
+        f"Concerns: {concerns}\n"
+        f"Est. leakage: ${leakage:,.0f}/yr\n"
+    )
+    _send_email(
+        to=NOTIFY_EMAIL,
+        subject=f"New EightySix lead: {name} — {restaurant}",
+        html=html,
+        text=text,
+    )
 
 
 def _persist_lead(lead_data: dict):
