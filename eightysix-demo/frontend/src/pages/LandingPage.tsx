@@ -1,8 +1,9 @@
 interface Props {
   onStart: () => void;
+  onDemo: () => void;
 }
 
-export function LandingPage({ onStart }: Props) {
+export function LandingPage({ onStart, onDemo }: Props) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6">
       <div className="max-w-xl text-center">
@@ -27,6 +28,15 @@ export function LandingPage({ onStart }: Props) {
         >
           Upload your reports
         </button>
+
+        <div className="mt-4">
+          <button
+            onClick={onDemo}
+            className="text-amber-400/80 hover:text-amber-300 text-sm cursor-pointer transition-colors"
+          >
+            or try it with demo data &rarr;
+          </button>
+        </div>
 
         <div className="mt-12 grid grid-cols-3 gap-6 text-sm text-gray-500">
           <div>

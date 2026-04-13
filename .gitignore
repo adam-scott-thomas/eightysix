@@ -9,12 +9,16 @@ venv/
 .env
 .env.prod
 .env.local
+.env.demo
 
 # Node
 node_modules/
 dist/
 dist-ssr/
 *.local
+
+# Built frontend bundle served by nginx (populated at deploy time)
+backend/frontend-dist/
 
 # IDE
 .vscode/

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { LandingPage } from './pages/LandingPage';
 import { UploadPage } from './pages/UploadPage';
 import { ConfirmPage } from './pages/ConfirmPage';
@@ -6,7 +6,9 @@ import { LeadCapturePage } from './pages/LeadCapturePage';
 import { ResultsPage } from './pages/ResultsPage';
 import type { UploadResponse, OwnerReport } from './lib/api';
 
-type Page = 'landing' | 'upload' | 'confirm' | 'lead_capture' | 'results';
+const DemoDataPage = lazy(() => import('./pages/DemoDataPage').then(m => ({ default: m.DemoDataPage })));
+
+type Page = 'landing' | 'upload' | 'confirm' | 'lead_capture' | 'results' | 'demo';
 
 function App() {
   const [page, setPage] = useState<Page>('landing');
@@ -50,7 +52,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {page === 'landing' && <LandingPage onStart={() => setPage('upload')} />}
+      {page === 'landing' && <LandingPage onStart={() => setPage('upload')} onDemo={() => setPage('demo')} />}
+      {page === 'demo' && (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-gray-400">Loading...</div>}>
+          <DemoDataPage onAnalyze={handleUploadComplete} onBack={handleReset} />
+        </Suspense>
+      )}
       {page === 'upload' && (
         <UploadPage onComplete={handleUploadComplete} onBack={handleReset} />
       )}
