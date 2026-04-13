@@ -3,14 +3,14 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_DB: eightysix
-      POSTGRES_USER: chops
-      POSTGRES_PASSWORD: chops_dev_password
+      POSTGRES_USER: eightysix
+      POSTGRES_PASSWORD: eightysix_dev_password
     ports:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U chops -d eightysix"]
+      test: ["CMD-SHELL", "pg_isready -U eightysix -d eightysix"]
       interval: 5s
       timeout: 3s
       retries: 5
@@ -20,7 +20,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql+asyncpg://chops:chops_dev_password@db:5432/eightysix
+      DATABASE_URL: postgresql+asyncpg://eightysix:eightysix_dev_password@db:5432/eightysix
       POS_PROVIDER: stub
       LABOR_PROVIDER: stub
     depends_on:

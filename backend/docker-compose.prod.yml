@@ -4,11 +4,11 @@ services:
     env_file: .env.prod
     environment:
       POSTGRES_DB: eightysix
-      POSTGRES_USER: chops
+      POSTGRES_USER: eightysix
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U chops -d eightysix"]
+      test: ["CMD-SHELL", "pg_isready -U eightysix -d eightysix"]
       interval: 5s
       timeout: 3s
       retries: 5
