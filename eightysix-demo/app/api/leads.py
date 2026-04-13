@@ -41,12 +41,15 @@ def _generate_code() -> str:
     return "".join(random.choices(string.digits, k=6))
 
 
+SES_FROM = "EightySix <adam@ghostlogic.tech>"
+
+
 def _send_verification_email(email: str, code: str, restaurant_name: str) -> bool:
     """Send verification code via AWS SES."""
     try:
         ses = boto3.client("ses", region_name="us-east-1")
         ses.send_email(
-            Source="EightySix <noreply@quantumatiq.com>",
+            Source=SES_FROM,
             Destination={"ToAddresses": [email]},
             Message={
                 "Subject": {"Data": f"Your EightySix verification code: {code}"},
@@ -176,7 +179,7 @@ def _notify_new_lead(lead_data: dict):
         leakage = lead_data.get("estimated_leakage", 0)
 
         ses.send_email(
-            Source="EightySix <noreply@quantumatiq.com>",
+            Source=SES_FROM,
             Destination={"ToAddresses": [NOTIFY_EMAIL]},
             Message={
                 "Subject": {"Data": f"New EightySix lead: {name} — {restaurant}"},
