@@ -130,6 +130,14 @@ def generate_history(
 
         day_orders_count = max(10, round(base_orders_per_day * dow_mult * trend * noise))
 
+        # For today, only generate orders up to "now" (partial day for realistic projection)
+        is_today = current == today
+        if is_today:
+            now = datetime.now(timezone.utc)
+            hours_open = max(1, (now.hour - 6))
+            fraction = hours_open / 17  # 17 business hours
+            day_orders_count = max(5, round(day_orders_count * fraction))
+
         # Generate orders
         day_open = datetime.combine(current, time(6, 0), tzinfo=timezone.utc)
         day_close = datetime.combine(current, time(23, 0), tzinfo=timezone.utc)
@@ -151,6 +159,11 @@ def generate_history(
                 t_offset = random.randint(15 * 3600, total_seconds)
 
             order_time = day_open + timedelta(seconds=t_offset)
+            # Cap today's orders to before now
+            if is_today:
+                now_dt = datetime.now(timezone.utc)
+                if order_time > now_dt:
+                    order_time = now_dt - timedelta(minutes=random.randint(1, 60))
 
             # Channel
             ch_r = random.random()
@@ -202,15 +215,21 @@ def generate_history(
             else:
                 clock_in = day_open + timedelta(hours=random.randint(3, 5), minutes=random.randint(0, 30))
 
-            clock_out = clock_in + timedelta(hours=random.randint(6, 9))
-            if clock_out > day_close:
-                clock_out = day_close
+            # Today's shifts stay open (clock_out=None) so dashboard shows active staff
+            is_today = current == today
+            if is_today:
+                clock_out_val = None
+            else:
+                clock_out = clock_in + timedelta(hours=random.randint(6, 9))
+                if clock_out > day_close:
+                    clock_out = day_close
+                clock_out_val = clock_out.isoformat()
 
             shifts.append({
                 "external_shift_id": f"HIST-SHIFT-{current.isoformat()}-{i + 1:03d}",
                 "employee_external_id": emp["external_employee_id"],
                 "clock_in": clock_in.isoformat(),
-                "clock_out": clock_out.isoformat(),
+                "clock_out": clock_out_val,
                 "role_during_shift": emp["role"],
                 "source_type": "manual",
                 "geofence_match": True,
