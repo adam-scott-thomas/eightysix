@@ -119,5 +119,13 @@ export const demoRecompute = (locId: string) =>
 export const getScenarios = () =>
   request<{ scenarios: string[] }>('/api/v1/demo/scenarios');
 
+// -- Forecast --
+export const generateForecast = (locId: string, horizon = 28) =>
+  request<any>(`/api/v1/locations/${locId}/forecast/generate?horizon_days=${horizon}`, { method: 'POST' });
+export const getForecast = (locId: string) =>
+  request<any>(`/api/v1/locations/${locId}/forecast`);
+export const backfillAggregates = (locId: string, days = 56) =>
+  request<any>(`/api/v1/locations/${locId}/forecast/backfill-aggregates?days=${days}`, { method: 'POST' });
+
 // -- Health --
 export const getHealth = () => request<any>('/health');

@@ -9,6 +9,7 @@ import { RecommendationsPage } from './pages/RecommendationsPage';
 import { IntegrityPage } from './pages/IntegrityPage';
 import { DataInputPage } from './pages/DataInputPage';
 import { DemoPage } from './pages/DemoPage';
+import { ForecastPage } from './pages/ForecastPage';
 import { LandingPage } from './pages/LandingPage';
 import { AuthPage } from './pages/AuthPage';
 
@@ -82,6 +83,8 @@ function App() {
     switch (page) {
       case 'dashboard':
         return <DashboardPage />;
+      case 'forecast':
+        return <ForecastPage />;
       case 'alerts':
         return <AlertsPage />;
       case 'recommendations':

@@ -1,6 +1,7 @@
 import {
   LayoutDashboard,
   Bell,
+  Calendar,
   Lightbulb,
   Shield,
   Database,
@@ -21,6 +22,7 @@ interface SidebarProps {
 
 const NAV_ITEMS = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, modes: ['demo', 'live'] },
+  { id: 'forecast', label: 'Forecast', icon: Calendar, modes: ['demo', 'live'] },
   { id: 'alerts', label: 'Alerts', icon: Bell, modes: ['demo', 'live'] },
   { id: 'recommendations', label: 'Actions', icon: Lightbulb, modes: ['demo', 'live'] },
   { id: 'integrity', label: 'Integrity', icon: Shield, modes: ['demo', 'live'] },
