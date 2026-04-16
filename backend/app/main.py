@@ -68,7 +68,21 @@ async def _seed_demo():
             if count == 0:
                 from app.services.demo_bootstrap import bootstrap_demo_location
                 await bootstrap_demo_location(db)
-                logger.info("Demo location bootstrapped with normal_day scenario")
+                logger.info("Demo location bootstrapped with 8 weeks of history")
+
+            # Seed holidays for current and next year if none exist
+            from app.db.models.external_event import ExternalEvent
+            from datetime import date
+            holiday_count = (await db.execute(
+                select(func.count()).select_from(ExternalEvent).where(ExternalEvent.event_type == "holiday")
+            )).scalar()
+            if holiday_count == 0:
+                from app.external.holidays import generate_holiday_events
+                year = date.today().year
+                for evt in generate_holiday_events(year) + generate_holiday_events(year + 1):
+                    db.add(evt)
+                await db.flush()
+                logger.info("Seeded holiday calendar for %d and %d", year, year + 1)
 
             await db.commit()
         except Exception:
