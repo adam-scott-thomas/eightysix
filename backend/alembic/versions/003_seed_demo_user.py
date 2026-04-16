@@ -23,7 +23,7 @@ def upgrade() -> None:
     op.execute(sa.text(
         """
         INSERT INTO users (id, email, hashed_password, full_name, role, is_active)
-        VALUES (:id, :email, :pw, :name, 'admin', true)
+        VALUES (:id::uuid, :email, :pw, :name, 'admin', true)
         ON CONFLICT (email) DO UPDATE SET role = 'admin'
         """
     ).bindparams(
