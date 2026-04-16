@@ -24,12 +24,12 @@ async def bootstrap_demo_location(
     Returns dict with location_id and dashboard snapshot.
     Idempotent — if location with this name exists, reuses it.
     """
-    # Generate 8 weeks of synthetic history
+    # Generate 4 weeks of synthetic history (lightweight for startup reliability)
     history = generate_history(
-        weeks=8,
-        base_orders_per_day=180,
+        weeks=4,
+        base_orders_per_day=80,
         avg_ticket=28.00,
-        staff_count=8,
+        staff_count=6,
         restaurant_name=restaurant_name,
     )
 

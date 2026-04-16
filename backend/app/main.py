@@ -55,30 +55,14 @@ async def _seed_demo():
 
     async with async_session_factory() as db:
         try:
-            # Advisory lock to prevent race between uvicorn workers
-            from sqlalchemy import text
-            lock_result = await db.execute(text("SELECT pg_try_advisory_xact_lock(86860001)"))
-            got_lock = lock_result.scalar()
-            if not got_lock:
-                logger.info("Another worker is seeding demo data, skipping")
-                return
-
             user = await get_user_by_email(db, settings.DEMO_USER_EMAIL)
             if user and user.hashed_password == "$PLACEHOLDER$":
                 user.hashed_password = hash_password(settings.DEMO_USER_PASSWORD)
                 await db.flush()
                 logger.info("Demo user password hash set")
 
-            # Bootstrap demo location if no locations exist
+            # Seed holidays (lightweight — ~80 rows)
             from sqlalchemy import select, func
-            from app.db.models.location import Location
-            count = (await db.execute(select(func.count()).select_from(Location))).scalar()
-            if count == 0:
-                from app.services.demo_bootstrap import bootstrap_demo_location
-                await bootstrap_demo_location(db)
-                logger.info("Demo location bootstrapped with 8 weeks of history")
-
-            # Seed holidays for current and next year if none exist
             from app.db.models.external_event import ExternalEvent
             from datetime import date
             holiday_count = (await db.execute(
