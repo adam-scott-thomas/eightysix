@@ -39,3 +39,38 @@ def create_app() -> FastAPI:
 
 
 app = create_app()
+
+
+@app.on_event("startup")
+async def _seed_demo():
+    """Ensure demo user has a real password hash and a populated location."""
+    import logging
+    logger = logging.getLogger(__name__)
+
+    if not settings.DEMO_MODE:
+        return
+
+    from app.db.session import async_session_factory
+    from app.services.auth_service import hash_password, get_user_by_email
+
+    async with async_session_factory() as db:
+        try:
+            user = await get_user_by_email(db, settings.DEMO_USER_EMAIL)
+            if user and user.hashed_password == "$PLACEHOLDER$":
+                user.hashed_password = hash_password(settings.DEMO_USER_PASSWORD)
+                await db.flush()
+                logger.info("Demo user password hash set")
+
+            # Bootstrap demo location if no locations exist
+            from sqlalchemy import select, func
+            from app.db.models.location import Location
+            count = (await db.execute(select(func.count()).select_from(Location))).scalar()
+            if count == 0:
+                from app.services.demo_bootstrap import bootstrap_demo_location
+                await bootstrap_demo_location(db)
+                logger.info("Demo location bootstrapped with normal_day scenario")
+
+            await db.commit()
+        except Exception:
+            logger.exception("Demo seed failed — non-fatal, continuing startup")
+            await db.rollback()
