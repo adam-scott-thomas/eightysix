@@ -57,7 +57,7 @@ async def _seed_demo():
         try:
             # Advisory lock to prevent race between uvicorn workers
             from sqlalchemy import text
-            lock_result = await db.execute(text("SELECT pg_try_advisory_lock(86860001)"))
+            lock_result = await db.execute(text("SELECT pg_try_advisory_xact_lock(86860001)"))
             got_lock = lock_result.scalar()
             if not got_lock:
                 logger.info("Another worker is seeding demo data, skipping")
@@ -93,8 +93,6 @@ async def _seed_demo():
                 logger.info("Seeded holiday calendar for %d and %d", year, year + 1)
 
             await db.commit()
-            await db.execute(text("SELECT pg_advisory_unlock(86860001)"))
         except Exception:
             logger.exception("Demo seed failed — non-fatal, continuing startup")
             await db.rollback()
-            await db.execute(text("SELECT pg_advisory_unlock(86860001)"))
