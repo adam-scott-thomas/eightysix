@@ -71,10 +71,10 @@ function App() {
     return <LandingPage onEnterApp={() => setPage('auth')} />;
   }
 
-  // Authenticated but on landing/auth — go to demo
+  // Authenticated but on landing/auth — go to dashboard if data exists, else demo
   if (page === 'landing' || page === 'auth') {
-    // Use setTimeout to avoid setState-during-render
-    setTimeout(() => setPage('demo'), 0);
+    const target = store.locations.length > 0 ? 'dashboard' : 'demo';
+    setTimeout(() => setPage(target), 0);
     return null;
   }
 
