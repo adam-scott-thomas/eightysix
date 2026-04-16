@@ -16,6 +16,7 @@ from app.api.v1.orders import router as orders_router
 from app.api.v1.shifts import router as shifts_router
 from app.api.v1.employees import router as employees_router
 from app.api.v1.export import router as export_router
+from app.api.v1.forecast import router as forecast_router
 
 api_router = APIRouter()
 
@@ -37,6 +38,7 @@ api_router.include_router(menu_router, dependencies=_authed)
 api_router.include_router(orders_router, dependencies=_authed)
 api_router.include_router(shifts_router, dependencies=_authed)
 api_router.include_router(export_router, dependencies=_authed)
+api_router.include_router(forecast_router, dependencies=_authed)
 
 # Demo — any authenticated user (DEMO_MODE gate is on the router itself)
 api_router.include_router(demo_router, dependencies=_authed)
