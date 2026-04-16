@@ -23,14 +23,14 @@ def upgrade() -> None:
     op.execute(sa.text(
         """
         INSERT INTO users (id, email, hashed_password, full_name, role, is_active)
-        VALUES (:id::uuid, :email, :pw, :name, 'admin', true)
+        VALUES (CAST(:user_id AS uuid), :email, :pw, :fullname, 'admin', true)
         ON CONFLICT (email) DO UPDATE SET role = 'admin'
         """
     ).bindparams(
-        id=DEMO_USER_ID,
+        user_id=DEMO_USER_ID,
         email="demo@quantumatiq.com",
         pw="$PLACEHOLDER$",
-        name="Demo User",
+        fullname="Demo User",
     ))
 
 
