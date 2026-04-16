@@ -38,5 +38,5 @@ api_router.include_router(orders_router, dependencies=_authed)
 api_router.include_router(shifts_router, dependencies=_authed)
 api_router.include_router(export_router, dependencies=_authed)
 
-# Demo — require admin
-api_router.include_router(demo_router, dependencies=[Depends(require_admin)])
+# Demo — any authenticated user (DEMO_MODE gate is on the router itself)
+api_router.include_router(demo_router, dependencies=_authed)
