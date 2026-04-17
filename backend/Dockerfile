@@ -9,7 +9,7 @@ COPY pyproject.toml /tmp/
 RUN pip install --no-cache-dir --prefix=/install \
     fastapi uvicorn[standard] "sqlalchemy[asyncio]" asyncpg \
     alembic pydantic pydantic-settings python-dotenv \
-    bcrypt "python-jose[cryptography]" email-validator \
+    "passlib[bcrypt]" "python-jose[cryptography]" email-validator \
     slowapi
 
 # Stage 2: Runtime — slim image, no gcc

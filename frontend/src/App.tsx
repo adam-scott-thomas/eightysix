@@ -9,7 +9,6 @@ import { RecommendationsPage } from './pages/RecommendationsPage';
 import { IntegrityPage } from './pages/IntegrityPage';
 import { DataInputPage } from './pages/DataInputPage';
 import { DemoPage } from './pages/DemoPage';
-import { ForecastPage } from './pages/ForecastPage';
 import { LandingPage } from './pages/LandingPage';
 import { AuthPage } from './pages/AuthPage';
 
@@ -72,10 +71,10 @@ function App() {
     return <LandingPage onEnterApp={() => setPage('auth')} />;
   }
 
-  // Authenticated but on landing/auth — go to dashboard if data exists, else demo
+  // Authenticated but on landing/auth — go to demo
   if (page === 'landing' || page === 'auth') {
-    const target = store.locations.length > 0 ? 'dashboard' : 'demo';
-    setTimeout(() => setPage(target), 0);
+    // Use setTimeout to avoid setState-during-render
+    setTimeout(() => setPage('demo'), 0);
     return null;
   }
 
@@ -83,8 +82,6 @@ function App() {
     switch (page) {
       case 'dashboard':
         return <DashboardPage />;
-      case 'forecast':
-        return <ForecastPage />;
       case 'alerts':
         return <AlertsPage />;
       case 'recommendations':

@@ -25,7 +25,6 @@ from app.services.snapshot_service import SnapshotService
 router = APIRouter(prefix="/api/v1/demo", tags=["demo"], dependencies=[Depends(_check_demo_mode)])
 
 TRUNCATE_TABLES = [
-    "forecasts", "daily_aggregates", "store_context",
     "dashboard_snapshots", "recommendations", "alerts", "integrity_flags",
     "events", "observations", "order_items", "orders", "shifts",
     "menu_items", "employees", "locations",
@@ -153,21 +152,3 @@ async def quick_assess(
 @router.get("/scenarios")
 async def get_scenarios():
     return {"scenarios": list_scenarios()}
-
-
-@router.post("/bootstrap")
-async def bootstrap(db: AsyncSession = Depends(get_db)):
-    """Generate 8 weeks of synthetic history for the demo location.
-
-    Creates a location, populates 56 days of orders/shifts, backfills
-    daily aggregates, and recomputes the dashboard. Takes ~30-60 seconds.
-    """
-    from sqlalchemy import select, func
-    from app.db.models.location import Location
-    count = (await db.execute(select(func.count()).select_from(Location))).scalar()
-    if count > 0:
-        raise HTTPException(400, "Demo data already exists. Reset first.")
-
-    from app.services.demo_bootstrap import bootstrap_demo_location
-    result = await bootstrap_demo_location(db)
-    return {"status": "bootstrapped", **result}
