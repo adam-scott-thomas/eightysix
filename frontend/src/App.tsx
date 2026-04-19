@@ -71,10 +71,10 @@ function App() {
     return <LandingPage onEnterApp={() => setPage('auth')} />;
   }
 
-  // Authenticated but on landing/auth — go to demo
+  // Authenticated but on landing/auth — go to dashboard
   if (page === 'landing' || page === 'auth') {
     // Use setTimeout to avoid setState-during-render
-    setTimeout(() => setPage('demo'), 0);
+    setTimeout(() => setPage('dashboard'), 0);
     return null;
   }
 
@@ -99,8 +99,6 @@ function App() {
 
   return (
     <AppShell
-      mode={store.mode}
-      onModeChange={store.setMode}
       activePage={page}
       onNavigate={setPage}
       locations={store.locations}

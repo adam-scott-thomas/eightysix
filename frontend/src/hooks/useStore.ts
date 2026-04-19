@@ -62,7 +62,7 @@ export const useStore = create<AppState>((set) => ({
   token: savedToken,
   isAuthenticated: !!(savedToken && savedUser),
 
-  mode: 'demo',
+  mode: 'live',
   locations: [],
   activeLocationId: null,
   dashboard: null,

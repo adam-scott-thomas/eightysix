@@ -1,12 +1,10 @@
 import { useState, type ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
-import type { AppMode, Location } from '../../types/api';
+import type { Location } from '../../types/api';
 import type { AuthUser } from '../../hooks/useStore';
 
 interface AppShellProps {
-  mode: AppMode;
-  onModeChange: (mode: AppMode) => void;
   activePage: string;
   onNavigate: (page: string) => void;
   locations: Location[];
@@ -22,8 +20,6 @@ interface AppShellProps {
 }
 
 export function AppShell({
-  mode,
-  onModeChange,
   activePage,
   onNavigate,
   locations,
@@ -51,8 +47,6 @@ export function AppShell({
 
       {/* Sidebar — always visible on desktop, slide-in overlay on mobile */}
       <Sidebar
-        mode={mode}
-        onModeChange={onModeChange}
         activePage={activePage}
         onNavigate={(page) => {
           onNavigate(page);
@@ -64,7 +58,6 @@ export function AppShell({
 
       <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <Header
-          mode={mode}
           locations={locations}
           activeLocationId={activeLocationId}
           onLocationChange={onLocationChange}

@@ -4,15 +4,11 @@ import {
   Lightbulb,
   Shield,
   Database,
-  Play,
   UtensilsCrossed,
   X,
 } from 'lucide-react';
-import type { AppMode } from '../../types/api';
 
 interface SidebarProps {
-  mode: AppMode;
-  onModeChange: (mode: AppMode) => void;
   activePage: string;
   onNavigate: (page: string) => void;
   isOpen: boolean;
@@ -20,16 +16,15 @@ interface SidebarProps {
 }
 
 const NAV_ITEMS = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, modes: ['demo', 'live'] },
-  { id: 'alerts', label: 'Alerts', icon: Bell, modes: ['demo', 'live'] },
-  { id: 'recommendations', label: 'Actions', icon: Lightbulb, modes: ['demo', 'live'] },
-  { id: 'integrity', label: 'Integrity', icon: Shield, modes: ['demo', 'live'] },
-  { id: 'data', label: 'Data Input', icon: Database, modes: ['live'] },
-  { id: 'demo', label: 'Demo Controls', icon: Play, modes: ['demo'] },
+  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { id: 'data', label: 'Data Input', icon: Database },
+  { id: 'alerts', label: 'Alerts', icon: Bell },
+  { id: 'recommendations', label: 'Actions', icon: Lightbulb },
+  { id: 'integrity', label: 'Integrity', icon: Shield },
 ];
 
-export function Sidebar({ mode, onModeChange, activePage, onNavigate, isOpen, onClose }: SidebarProps) {
-  const visibleItems = NAV_ITEMS.filter((item) => item.modes.includes(mode));
+export function Sidebar({ activePage, onNavigate, isOpen, onClose }: SidebarProps) {
+  const visibleItems = NAV_ITEMS;
 
   return (
     <aside
@@ -84,32 +79,6 @@ export function Sidebar({ mode, onModeChange, activePage, onNavigate, isOpen, on
         })}
       </nav>
 
-      {/* Mode toggle */}
-      <div className="p-3 border-t border-gray-800">
-        <div className="text-[11px] font-medium uppercase tracking-wider text-gray-500 mb-2 px-1">
-          Mode
-        </div>
-        <div className="flex bg-gray-800 rounded-lg p-1">
-          <button
-            onClick={() => onModeChange('demo')}
-            className={`
-              flex-1 text-xs font-medium py-1.5 rounded-md transition-colors duration-150 cursor-pointer
-              ${mode === 'demo' ? 'bg-amber-500 text-white shadow-sm' : 'text-gray-400 hover:text-gray-200'}
-            `}
-          >
-            Demo
-          </button>
-          <button
-            onClick={() => onModeChange('live')}
-            className={`
-              flex-1 text-xs font-medium py-1.5 rounded-md transition-colors duration-150 cursor-pointer
-              ${mode === 'live' ? 'bg-emerald-500 text-white shadow-sm' : 'text-gray-400 hover:text-gray-200'}
-            `}
-          >
-            Live
-          </button>
-        </div>
-      </div>
     </aside>
   );
 }

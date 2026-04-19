@@ -1,9 +1,8 @@
 import { RefreshCw, ChevronDown, Menu, LogOut, User } from 'lucide-react';
-import type { AppMode, Location } from '../../types/api';
+import type { Location } from '../../types/api';
 import type { AuthUser } from '../../hooks/useStore';
 
 interface HeaderProps {
-  mode: AppMode;
   locations: Location[];
   activeLocationId: string | null;
   onLocationChange: (id: string | null) => void;
@@ -33,7 +32,6 @@ function formatTimestamp(iso: string | null): string {
 }
 
 export function Header({
-  mode,
   locations,
   activeLocationId,
   onLocationChange,
@@ -91,17 +89,8 @@ export function Header({
         )}
       </div>
 
-      {/* Right: Mode badge + Recompute */}
+      {/* Right: Recompute */}
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-        <span
-          className={`
-            inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider
-            ${mode === 'demo' ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700'}
-          `}
-        >
-          {mode}
-        </span>
-
         <button
           onClick={onRecompute}
           disabled={loading || !activeLocationId}
