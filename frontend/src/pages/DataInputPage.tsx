@@ -958,20 +958,38 @@ export function DataInputPage() {
         </h2>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-3 sm:p-5">
-          {hasLocations && activeLocation ? (
-            <div className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-blue-500" />
-              <div>
-                <p className="text-sm font-semibold text-gray-900">
-                  {activeLocation.name}
-                </p>
-                <p className="text-xs text-gray-500">{activeLocation.timezone}</p>
+          {hasLocations && activeLocation && !showCreateLocation ? (
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-blue-500" />
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">
+                    {activeLocation.name}
+                  </p>
+                  <p className="text-xs text-gray-500">{activeLocation.timezone}</p>
+                </div>
               </div>
+              <button
+                onClick={() => setShowCreateLocation(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg hover:bg-gray-200 transition-colors duration-150 cursor-pointer"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Add location
+              </button>
             </div>
-          ) : hasLocations && !activeLocation ? (
-            <p className="text-sm text-amber-600 font-medium">
-              Select a location from the header dropdown to begin importing data.
-            </p>
+          ) : hasLocations && !activeLocation && !showCreateLocation ? (
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-sm text-amber-600 font-medium">
+                Select a location from the header dropdown to begin importing data.
+              </p>
+              <button
+                onClick={() => setShowCreateLocation(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg hover:bg-gray-200 transition-colors duration-150 cursor-pointer"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Add location
+              </button>
+            </div>
           ) : !showCreateLocation ? (
             <div className="text-center py-4">
               <MapPin className="w-8 h-8 text-gray-300 mx-auto mb-2" />
